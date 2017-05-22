@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 public class Question {
     private int id;
-    private String questionText;
+    private String question;
     private ArrayList<Option> options;
 
     public Question() {}
 
     public Question(int id, String questionText, ArrayList<Option> options) {
         this.id = id;
-        this.questionText = questionText;
+        this.question = questionText;
         this.options = options;
     }
 
@@ -23,12 +23,12 @@ public class Question {
         this.id = id;
     }
 
-    public String getQuestionText() {
-        return questionText;
+    public String getQuestion() {
+        return question;
     }
 
-    public void setQuestionText(String questionText) {
-        this.questionText = questionText;
+    public void setQuestion(String question) {
+        this.question = question;
     }
 
     public ArrayList<Option> getOptions() {
