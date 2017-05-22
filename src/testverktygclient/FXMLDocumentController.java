@@ -10,7 +10,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 /**
@@ -23,11 +22,9 @@ public class FXMLDocumentController implements Initializable {
     private Label label;
     
     @FXML
-    private Button LoginButton;
-    
-    @FXML
     private void handleButtonAction(ActionEvent event) {
-        System.out.println("This is when you pressed the button!");
+        System.out.println("You clicked me!");
+        label.setText("Hello World!");
     }
     
     @Override
