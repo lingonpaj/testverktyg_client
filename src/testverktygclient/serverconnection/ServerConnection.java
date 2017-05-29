@@ -51,5 +51,15 @@ public class ServerConnection {
         hardCodedCourses.add(new Course(1, "Basic Footall", hardCodedTests));
         
     }
+
+    public User loginAuthentication(String userName, String password) {
+        //Before we have a server - loop through hardcoded list
+        for(User user : hardCodedUsers) {
+            if(userName.equals(user.getUserName()) && password.equals(user.getPassword())) {
+                return user;
+            }
+        }
+        return null;
+    }
     
 }
