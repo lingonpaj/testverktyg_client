@@ -17,6 +17,7 @@
          </font>
       </Text>
       <TextField fx:id="userName" layoutX="402.0" layoutY="360.0" prefHeight="31.0" prefWidth="193.0" />
+      <PasswordField fx:id="password" layoutX="402.0" layoutY="443.0" prefHeight="31.0" prefWidth="193.0" />
       <Text layoutX="441.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" textAlignment="CENTER" wrappingWidth="115.291015625">
          <font>
             <Font size="18.0" />
@@ -37,6 +38,5 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <PasswordField fx:id="password" layoutX="402.0" layoutY="443.0" prefHeight="31.0" prefWidth="193.0" />
     </children>
 </AnchorPane>
