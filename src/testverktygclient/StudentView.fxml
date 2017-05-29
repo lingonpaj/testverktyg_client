@@ -8,10 +8,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane prefHeight="80.0" prefWidth="1000.0" styleClass="headerfooter" stylesheets="@../../css/taketestview.css">
+      <AnchorPane prefHeight="80.0" prefWidth="1000.0" style="-fx-background-color: rgb(221, 72, 20);">
          <children>
             <Label fx:id="loggedInAsLabel" layoutX="639.0" layoutY="14.0" prefHeight="42.0" prefWidth="146.0" text="Logged in as: [Name]" textFill="WHITE">
                <font>
