@@ -29,7 +29,7 @@ import testverktygclient.models.Teacher;
  *
  * @author Alexander
  */
-public class FXMLDocumentController implements Initializable {
+public class LoginController implements Initializable {
     @FXML
     private Label label;
     
