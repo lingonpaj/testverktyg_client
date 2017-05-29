@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygclient.StudentViewController">
    <children>
       <AnchorPane prefHeight="80.0" prefWidth="1000.0" style="-fx-background-color: rgb(221, 72, 20);">
          <children>
@@ -37,17 +37,18 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TableView fx:id="completedTestTable" layoutX="122.0" layoutY="187.0" prefHeight="123.0" prefWidth="413.0" styleClass="studentTableView">
+      <TableView fx:id="completedTestTable" layoutX="122.0" layoutY="468.0" prefHeight="123.0" prefWidth="413.0" styleClass="studentTableView">
         <columns>
-          <TableColumn prefWidth="412.0" text="Student [student name] - Completed Tests" />
+          <TableColumn fx:id="completedTestColumn" prefWidth="412.0" text="Completed Tests" />
         </columns>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </TableView>
-      <TableView fx:id="availableTestTable" layoutX="122.0" layoutY="335.0" prefHeight="123.0" prefWidth="413.0" styleClass="studentTableView">
+      <ChoiceBox fx:id="chooseCourseDropDown" layoutX="123.0" layoutY="192.0" prefWidth="150.0" />
+      <TableView fx:id="availableTestTable" layoutX="122.0" layoutY="289.0" prefHeight="123.0" prefWidth="413.0" styleClass="studentTableView">
          <columns>
-            <TableColumn prefWidth="412.0" text="Student [student name] - Available Tests" />
+            <TableColumn fx:id="availableTestColumn" prefWidth="412.0" text="Available Tests" />
          </columns>
          <cursor>
             <Cursor fx:constant="HAND" />

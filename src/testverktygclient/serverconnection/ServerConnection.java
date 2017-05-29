@@ -1,6 +1,7 @@
 package testverktygclient.serverconnection;
 
 import java.util.ArrayList;
+import testverktygclient.models.CompletedTest;
 import testverktygclient.models.Course;
 import testverktygclient.models.Option;
 import testverktygclient.models.Question;
@@ -13,14 +14,18 @@ public class ServerConnection {
     //HARDCODED to test frontend
     public ArrayList<User> hardCodedUsers;
     public ArrayList<Course> hardCodedCourses;
+    public static User loggedInUser;
     
     //Creates hardcoded users and courses so we can test front end
     public ServerConnection() {
         hardCodedCourses = new ArrayList();
         hardCodedUsers = new ArrayList();
         
+        CompletedTest completedTest = new CompletedTest(1, "Code 1","Completed Test", 34, 22);
+        ArrayList<CompletedTest> hardCodeCTest = new ArrayList();
+        hardCodeCTest.add(completedTest);
         //Adding users
-        hardCodedUsers.add(new Student(null, 1, "skarl", "password1", "Sofia", "Karlsson"));
+        hardCodedUsers.add(new Student(hardCodeCTest, 1, "skarl", "password1", "Sofia", "Karlsson"));
         hardCodedUsers.add(new Teacher(2, "kjoha", "password2", "Kalle", "Johansson"));
         
         //Adding courses (that has test->Questions->Options)
@@ -47,8 +52,12 @@ public class ServerConnection {
         ArrayList<Test> hardCodedTests = new ArrayList();
         hardCodedTests.add(premierLeagueTest);
         
+        
+        
+        
         //Adding the course
         hardCodedCourses.add(new Course(1, "Basic Footall", hardCodedTests));
+        hardCodedCourses.add(new Course(2, "testthingy", hardCodedTests));
         
     }
     
