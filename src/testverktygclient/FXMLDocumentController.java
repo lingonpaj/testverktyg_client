@@ -7,6 +7,7 @@ package testverktygclient;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,6 +21,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import testverktygclient.models.CompletedTest;
 import testverktygclient.models.Student;
 import testverktygclient.models.Teacher;
 
@@ -28,9 +30,6 @@ import testverktygclient.models.Teacher;
  * @author Alexander
  */
 public class FXMLDocumentController implements Initializable {
-    
-    
-    
     @FXML
     private Label label;
     
@@ -51,9 +50,13 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException {
-        System.out.println("This is when you pressed the button!");
-        
         //Make queries to DB to find both Teacher and Students.
+        
+        //ArrayList<CompletedTest> completedTests, int userId, 
+        //String userName, String password, String firstName, String lastName
+        
+        ArrayList<CompletedTest> complet = new ArrayList<CompletedTest>();
+        Student lol = new Student(complet, 1, "lol", "dakka", "fok u", "u");
         
         
         //Modify to loop through lists, modify check against aquiring PW and Username of respective person
@@ -61,13 +64,18 @@ public class FXMLDocumentController implements Initializable {
             
             ErrorLogin.setText("");
             
+            String assign = "";
+            
+            
             //Based on whoever is logged in, create a object of that role
-            //String role = whateverElementIsBeingIteratedUpon.getRole();
-            //if(role.equals("Teacher"){
+            //String role = whateverElementIsBeingIteratedUpon.getClass().getName();
+            //if(role.contains("Teacher"){
             //    loggedInTeacher = whateverElementIsBeingIteratedUpon;
+            //    assign = "Teacher";
             //}
             //else{
             //    loggedInStudent = whateverElementIsBeingIteratedUpon;
+            //    assign = "Student";
             //}
             
            
@@ -77,11 +85,12 @@ public class FXMLDocumentController implements Initializable {
             stage = new Stage();
             
             //Depending on who the user is, we spawn that respective view
-            //root = FXMLLoader.load(getClass().getResource(whateverElementIsBeingIteratedUpon.getRole() + "Controller.fxml"));
+            
+            //root = FXMLLoader.load(getClass().getResource(assign + "Controller.fxml"));
             //stage.setScene(new Scene(root));
             
             //Set the title to respective thing
-            //stage.setTitle("The " + whateverElementIsBeingIteratedUpon.getRole() + " view!");
+            //stage.setTitle("The " + assign + " view!");
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(LoginButton.getScene().getWindow());
             stage.showAndWait();
