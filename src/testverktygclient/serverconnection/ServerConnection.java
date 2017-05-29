@@ -20,8 +20,8 @@ public class ServerConnection {
         hardCodedUsers = new ArrayList();
         
         //Adding users
-        hardCodedUsers.add(new Student(null, 1, "skarl", "password1", "Sofia", "Karlsson"));
-        hardCodedUsers.add(new Teacher(2, "kjoha", "password2", "Kalle", "Johansson"));
+        hardCodedUsers.add(new Student(null, 1, "skarl", "password1", "Sofia", "Karlsson", "Student"));
+        hardCodedUsers.add(new Teacher(2, "kjoha", "password2", "Kalle", "Johansson", "Teacher"));
         
         //Adding courses (that has test->Questions->Options)
         ArrayList<Option> hardcodedOptions = new ArrayList();

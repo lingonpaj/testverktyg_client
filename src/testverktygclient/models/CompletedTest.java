@@ -58,3 +58,4 @@ public class CompletedTest {
         this.testMaxScore = testMaxScore;
     }
 }
+

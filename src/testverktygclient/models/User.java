@@ -6,15 +6,17 @@ public abstract class User {
     protected String password;
     protected String firstName;
     protected String lastName;
+    protected String role;
     
     public User() {}
 
-    public User(int userId, String userName, String password, String firstName, String lastName) {
+    public User(int userId, String userName, String password, String firstName, String lastName, String role) {
         this.userId = userId;
         this.userName = userName;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.role = role;
     }
 
     public int getUserId() {
@@ -55,5 +57,13 @@ public abstract class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+    
+    public String getRole(){
+        return role;
+    }
+    
+    public void setRole(String role){
+        this.role = role;
     }
 }
