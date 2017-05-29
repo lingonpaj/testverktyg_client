@@ -11,12 +11,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import testverktygclient.serverconnection.ServerConnection;
 
 /**
  *
  * @author Alexander
  */
 public class FXMLDocumentController implements Initializable {
+    ServerConnection sc;
     
     @FXML
     private Label label;
@@ -24,12 +26,12 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
-        label.setText("Hello World!");
+        label.setText(sc.hardCodedCourses.get(0).getTests().get(0).getQuestions().get(1).getQuestion());
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        sc = new ServerConnection();
     }    
     
 }
