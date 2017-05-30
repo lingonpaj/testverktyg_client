@@ -44,22 +44,16 @@ public class StudentViewController implements Initializable {
 
     @FXML
     private Label loggedInAsLabel;
-
     @FXML
     private Button signOutButton;
-
     @FXML
     private TableView<CompletedTest> completedTestTable;
-
     @FXML
     private TableColumn<Test, String> availableTestColumn;
-
     @FXML
     private TableColumn<CompletedTest, String> completedTestColumn;
-
     @FXML
     private ChoiceBox chooseCourseDropDown;
-
     @FXML
     private TableView<Test> availableTestTable;
 
