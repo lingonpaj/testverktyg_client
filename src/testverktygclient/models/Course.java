@@ -38,4 +38,9 @@ public class Course {
     public void setTests(ArrayList<Test> tests) {
         this.tests = tests;
     }
+
+    @Override
+    public String toString() {
+        return "Course: " + name;
+    }
 }

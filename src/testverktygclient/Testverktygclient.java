@@ -22,6 +22,7 @@ public class Testverktygclient extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setTitle("Newton Testing Tool Group 1 2017");
         stage.show();
     }
 
