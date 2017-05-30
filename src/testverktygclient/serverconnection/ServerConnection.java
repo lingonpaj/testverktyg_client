@@ -38,9 +38,18 @@ public class ServerConnection {
         
         Question q2 = new Question(2, "What is the name of Manchester Uniteds home arena?", hardcodedOptions2);
         
+        ArrayList<Option> hardcodedOptions3 = new ArrayList();
+        hardcodedOptions3.add(new Option(1, "Blue", false));
+        hardcodedOptions3.add(new Option(2, "Yellow", true));
+        hardcodedOptions3.add(new Option(2, "Green", false));
+        
+        Question q3 = new Question(3, "Color of the sun yo?", hardcodedOptions3);
+        
         ArrayList<Question> hardCodedQuestions = new ArrayList();
         hardCodedQuestions.add(q1);
         hardCodedQuestions.add(q2);
+        hardCodedQuestions.add(q3);
+        
         
         Test premierLeagueTest = new Test(1, "Premier League Test", hardCodedQuestions);
         
@@ -51,5 +60,15 @@ public class ServerConnection {
         hardCodedCourses.add(new Course(1, "Basic Footall", hardCodedTests));
         
     }
+
+    public ArrayList<User> getHardCodedUsers() {
+        return hardCodedUsers;
+    }
+
+    public ArrayList<Course> getHardCodedCourses() {
+        return hardCodedCourses;
+    }
+    
+    
     
 }

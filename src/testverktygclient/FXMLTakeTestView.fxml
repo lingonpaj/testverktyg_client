@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
@@ -13,16 +14,23 @@
    <children>
       <AnchorPane fx:id="question_pane" layoutX="349.0" layoutY="80.0" prefHeight="540.0" prefWidth="641.0" styleClass="anchorwhite" stylesheets="@../../css/taketestview.css">
          <children>
-            <Label fx:id="question_text" layoutX="26.0" layoutY="28.0" prefHeight="121.0" prefWidth="589.0" text="Placeholder question what's the scientific name for the earth?" textOverrun="CLIP" wrapText="true">
+            <Label fx:id="question_text" layoutX="26.0" layoutY="94.0" prefHeight="57.0" prefWidth="589.0" textOverrun="CLIP" wrapText="true">
                <font>
-                  <Font size="30.0" />
+                  <Font size="19.0" />
                </font>
             </Label>
+            <VBox fx:id="option_list" layoutX="34.0" layoutY="151.0" prefHeight="287.0" prefWidth="574.0" />
+            <Label fx:id="question_number" layoutX="26.0" layoutY="14.0" prefHeight="80.0" prefWidth="469.0">
+               <font>
+                  <Font size="50.0" />
+               </font>
+            </Label>
+            <Button layoutX="456.0" layoutY="458.0" mnemonicParsing="false" onAction="#finishTest" prefHeight="47.0" prefWidth="119.0" styleClass="finishbutton" stylesheets="@../../build/classes/testverktygclient/taketestview.css" text="Finish" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="80.0" prefWidth="1000.0" styleClass="headerfooter" stylesheets="@../../css/taketestview.css">
          <children>
-            <Label alignment="CENTER" layoutX="297.0" layoutY="2.0" prefHeight="80.0" prefWidth="459.0" text="Provnamn" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="question_name" alignment="CENTER" layoutX="297.0" layoutY="2.0" prefHeight="80.0" prefWidth="459.0" text="Provnamn" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="46.0" />
                </font>
@@ -32,13 +40,14 @@
       <AnchorPane layoutY="620.0" prefHeight="80.0" prefWidth="1000.0" styleClass="headerfooter" stylesheets="@../../css/taketestview.css" />
       <VBox layoutX="14.0" layoutY="80.0" prefHeight="540.0" prefWidth="335.0">
          <children>
-            <HBox fillHeight="false" prefHeight="442.0" prefWidth="316.0" styleClass="anchorwhite" stylesheets="@../../css/taketestview.css">
+            <VBox fx:id="question_list" prefHeight="442.0" prefWidth="316.0">
                <VBox.margin>
                   <Insets left="20.0" right="20.0" top="20.0" />
-               </VBox.margin></HBox>
+               </VBox.margin>
+            </VBox>
             <HBox prefHeight="82.0" prefWidth="335.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="74.0" prefWidth="139.0" styleClass="nextpreviousbutton" stylesheets="@../../css/taketestview.css" text="≪">
+                  <Button fx:id="previous_button" mnemonicParsing="false" prefHeight="74.0" prefWidth="139.0" styleClass="nextpreviousbutton" stylesheets="@../../css/taketestview.css" text="≪">
                      <HBox.margin>
                         <Insets left="15.0" />
                      </HBox.margin>
@@ -46,7 +55,7 @@
                         <Font size="44.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="74.0" prefWidth="139.0" styleClass="nextpreviousbutton" stylesheets="@../../css/taketestview.css" text="≫">
+                  <Button fx:id="next_button" mnemonicParsing="false" prefHeight="74.0" prefWidth="139.0" styleClass="nextpreviousbutton" stylesheets="@../../css/taketestview.css" text="≫">
                      <HBox.margin>
                         <Insets left="30.0" />
                      </HBox.margin>

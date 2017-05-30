@@ -5,12 +5,18 @@
  */
 package testverktygclient;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 import testverktygclient.serverconnection.ServerConnection;
 
 /**
@@ -24,9 +30,13 @@ public class FXMLDocumentController implements Initializable {
     private Label label;
     
     @FXML
-    private void handleButtonAction(ActionEvent event) {
+    private void handleButtonAction(ActionEvent event) throws IOException {
         System.out.println("You clicked me!");
-        label.setText(sc.hardCodedCourses.get(0).getTests().get(0).getQuestions().get(1).getQuestion());
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLTakeTestView.fxml"));
+        root.getStylesheets().add(getClass().getResource("taketestview.css").toExternalFo‌​rm());
+        Scene s = new Scene(root);
+        Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stg.setScene(s);
     }
     
     @Override
