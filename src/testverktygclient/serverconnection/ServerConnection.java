@@ -10,12 +10,13 @@ import testverktygclient.models.Test;
 import testverktygclient.models.User;
 
 public class ServerConnection {
+    private static ServerConnection instance;
     //HARDCODED to test frontend
     public ArrayList<User> hardCodedUsers;
     public ArrayList<Course> hardCodedCourses;
     
     //Creates hardcoded users and courses so we can test front end
-    public ServerConnection() {
+    private ServerConnection() {
         hardCodedCourses = new ArrayList();
         hardCodedUsers = new ArrayList();
         
@@ -50,6 +51,13 @@ public class ServerConnection {
         //Adding the course
         hardCodedCourses.add(new Course(1, "Basic Footall", hardCodedTests));
         
+    }
+    
+     public static ServerConnection getInstance(){
+        if(instance == null) {
+            instance = new ServerConnection();
+        }
+        return instance;
     }
 
     public User loginAuthentication(String userName, String password) {
