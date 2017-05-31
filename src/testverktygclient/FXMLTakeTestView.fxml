@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1000.0" styleClass="anchorwhite" stylesheets="@taketestview.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygclient.FXMLTakeTestViewController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1000.0" styleClass="anchorwhite" stylesheets="@taketestview.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygclient.FXMLTakeTestViewController">
    <children>
       <AnchorPane fx:id="question_pane" layoutX="349.0" layoutY="80.0" prefHeight="540.0" prefWidth="641.0" styleClass="anchorwhite" stylesheets="@taketestview.css">
          <children>
@@ -26,6 +24,11 @@
                </font>
             </Label>
             <Button fx:id="finishbutton" layoutX="456.0" layoutY="458.0" mnemonicParsing="false" onAction="#finishTest" prefHeight="47.0" prefWidth="119.0" styleClass="finishbutton" stylesheets="@taketestview.css" text="Finish" />
+            <Label fx:id="timerLabel" layoutX="432.0" layoutY="37.0" prefHeight="57.0" prefWidth="213.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="80.0" prefWidth="1000.0" styleClass="headerfooter" stylesheets="@taketestview.css">
