@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1000.0" styleClass="white" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygclient.StudentViewController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1000.0" styleClass="white" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygclient.StudentViewController">
    <children>
       <AnchorPane prefHeight="80.0" prefWidth="1000.0" style="-fx-background-color: rgb(221, 72, 20);">
          <children>
-            <Label fx:id="loggedInAsLabel" layoutX="658.0" layoutY="14.0" prefHeight="42.0" prefWidth="186.0" textFill="WHITE">
+            <Label fx:id="loggedInAsLabel" layoutX="658.0" layoutY="14.0" prefHeight="42.0" prefWidth="251.0" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -28,17 +28,17 @@
             </Button>
          </children>
       </AnchorPane>
-      <Label layoutX="123.0" layoutY="115.0" prefHeight="53.0" prefWidth="292.0" text="Choose test - Student view&#10;">
+      <Label layoutX="291.0" layoutY="115.0" prefHeight="53.0" prefWidth="328.0" text="Choose test - Student view&#10;">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="122.0" layoutY="154.0" prefHeight="28.0" prefWidth="328.0" text="You can choose a test or see results from an old test">
+      <Label layoutX="290.0" layoutY="154.0" prefHeight="28.0" prefWidth="387.0" text="You can choose a test or see results from an old test">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TableView fx:id="completedTestTable" layoutX="122.0" layoutY="468.0" prefHeight="123.0" prefWidth="413.0" styleClass="studentTableView">
+      <TableView fx:id="completedTestTable" layoutX="290.0" layoutY="468.0" prefHeight="123.0" prefWidth="413.0" styleClass="studentTableView">
         <columns>
           <TableColumn fx:id="completedTestColumn" prefWidth="412.0" text="Completed Tests" />
         </columns>
@@ -46,8 +46,8 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </TableView>
-      <ChoiceBox fx:id="chooseCourseDropDown" layoutX="123.0" layoutY="192.0" prefHeight="31.0" prefWidth="237.0" />
-      <TableView fx:id="availableTestTable" layoutX="122.0" layoutY="289.0" prefHeight="123.0" prefWidth="413.0" styleClass="studentTableView">
+      <ChoiceBox fx:id="chooseCourseDropDown" layoutX="291.0" layoutY="192.0" prefHeight="31.0" prefWidth="237.0" />
+      <TableView fx:id="availableTestTable" layoutX="290.0" layoutY="289.0" prefHeight="123.0" prefWidth="413.0" styleClass="studentTableView">
          <columns>
             <TableColumn fx:id="availableTestColumn" prefWidth="412.0" text="Available Tests" />
          </columns>
@@ -55,5 +55,13 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </TableView>
+      <Button layoutX="738.0" layoutY="385.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="109.0" styleClass="orange-button" text="Start Test" textAlignment="CENTER" textFill="#111111">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </AnchorPane>
