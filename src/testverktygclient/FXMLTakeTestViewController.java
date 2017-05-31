@@ -14,6 +14,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
@@ -44,16 +45,52 @@ public class FXMLTakeTestViewController implements Initializable {
     Button next_button, previous_button;
     
     ServerConnection serverconnection = new ServerConnection();
- 
     
-    int[] selectedoptions;
+    CheckBox[] currentcheckboxes;
+
+    int[][] selectedoptions;
     
     public void finishTest(){
         int score = 0;
+        for (int i = 0; i < selectedoptions.length; i++) {
+            System.out.println(selectedoptions[i][0]);
+        }
         for(int i = 0; i < serverconnection.getHardCodedCourses().get(0).getTests().get(0).getQuestions().size(); i++){
-            if((selectedoptions[i]-1) > -1){
-                if(serverconnection.getHardCodedCourses().get(0).getTests().get(0).getQuestions().get(i).getOptions().get(selectedoptions[i]-1).isCorrect()){
+            int possiblescore = 0;
+            int multiscore = 0;
+            System.out.println("checking new question");
+            if(serverconnection.getHardCodedCourses().get(0).getTests().get(0).getQuestions().get(i).isMulti()){ 
+                for(int n = 0; n < selectedoptions[i].length; n++){
+                    System.out.println("what is this? " + selectedoptions[i][n] + "loop: " + n);
+                    System.out.println(serverconnection.getHardCodedCourses().get(0).getTests().get(0).getQuestions().get(i).getOptions().get(n).isCorrect());
+                    if(serverconnection.getHardCodedCourses().get(0).getTests().get(0).getQuestions().get(i).getOptions().get(n).isCorrect()){
+
+                        if(selectedoptions[i][n] > 0){
+                            multiscore++;
+                        }
+                        possiblescore++;
+                    }else{
+                        System.out.println("does this ever happen?");
+                        System.out.println("plesasas" + selectedoptions[i][n]);
+                        if(selectedoptions[i][n] > 0){
+                            multiscore--;
+                        }
+                    }
+                }
+                System.out.println("multi: "+multiscore + "poss: " + possiblescore);
+                if(multiscore == possiblescore){
                     score++;
+                }
+            }
+            else{
+                if((selectedoptions[i][0]) > 0){
+                    for (int j = 0; j < selectedoptions[i].length; j++) {
+                        if(selectedoptions[i][0]-1 == j){
+                            if(serverconnection.getHardCodedCourses().get(0).getTests().get(0).getQuestions().get(i).getOptions().get(j).isCorrect()){
+                                score++;
+                            }   
+                        }
+                    }
                 }
             }
         }
@@ -74,26 +111,52 @@ public class FXMLTakeTestViewController implements Initializable {
             question_number.setText("Question " + value);
             option_list.getChildren().clear();
             int currentquestion = Integer.parseInt(question_number.getText().replaceAll("[^0-9]", ""));
-            ToggleGroup togglegroup = new ToggleGroup();
-            for(int i = 0; i < serverconnection.getHardCodedCourses().get(0).getTests().get(0).getQuestions().get(value-1).getOptions().size(); i++){
-                RadioButton newoption = new RadioButton(serverconnection.getHardCodedCourses().get(0).getTests().get(0).getQuestions().get(value-1).getOptions().get(i).getOptionText());
-                newoption.setOnAction(new EventHandler<ActionEvent>(){
-                    @Override
-                    public void handle(ActionEvent event) {
-                        for(int i = 0; i < newoption.getToggleGroup().getToggles().size(); i++){
-                            if(newoption == newoption.getToggleGroup().getToggles().get(i)){
-                                selectedoptions[currentquestion-1] = i+1;
-                                System.out.println(selectedoptions[currentquestion-1]);
+            
+            
+            if(!serverconnection.getHardCodedCourses().get(0).getTests().get(0).getQuestions().get(value-1).isMulti()){
+                ToggleGroup togglegroup = new ToggleGroup();
+                for(int i = 0; i < serverconnection.getHardCodedCourses().get(0).getTests().get(0).getQuestions().get(value-1).getOptions().size(); i++){
+                    RadioButton newoption = new RadioButton(serverconnection.getHardCodedCourses().get(0).getTests().get(0).getQuestions().get(value-1).getOptions().get(i).getOptionText());
+                    newoption.setOnAction(new EventHandler<ActionEvent>(){
+                        @Override
+                        public void handle(ActionEvent event) {
+                            for(int i = 0; i < newoption.getToggleGroup().getToggles().size(); i++){
+                                if(newoption == newoption.getToggleGroup().getToggles().get(i)){
+                                    selectedoptions[currentquestion-1][0] = i+1;
+                                }
                             }
                         }
+                    });
+                    newoption.setToggleGroup(togglegroup);
+                    option_list.getChildren().add(newoption);
+                }
+                if(selectedoptions[currentquestion-1][0] > 0){
+                    togglegroup.getToggles().get(selectedoptions[currentquestion-1][0]-1).setSelected(true);
+                }
+            }else{
+                currentcheckboxes = new CheckBox[serverconnection.getHardCodedCourses().get(0).getTests().get(0).getQuestions().get(value-1).getOptions().size()];
+                for(int i = 0; i < serverconnection.getHardCodedCourses().get(0).getTests().get(0).getQuestions().get(value-1).getOptions().size(); i++){
+                    CheckBox newoption = new CheckBox(serverconnection.getHardCodedCourses().get(0).getTests().get(0).getQuestions().get(value-1).getOptions().get(i).getOptionText());
+                    newoption.setOnAction(new EventHandler<ActionEvent>(){
+                        @Override
+                        public void handle(ActionEvent event) {
+                            for(int i = 0; i < currentcheckboxes.length; i++){
+                                if(newoption == currentcheckboxes[i]){
+                                    if(newoption.isSelected()){
+                                        selectedoptions[currentquestion-1][i] = i+1;
+                                    }else{
+                                        selectedoptions[currentquestion-1][i] = 0;
+                                    }
+                                }
+                            }
+                        }
+                    });
+                    currentcheckboxes[i] = newoption;
+                    option_list.getChildren().add(newoption);
+                    if(selectedoptions[currentquestion-1][i] > 0){
+                        newoption.setSelected(true);
                     }
-                });
-                newoption.setToggleGroup(togglegroup);
-                option_list.getChildren().add(newoption);
-                System.out.println(newoption.getToggleGroup().getToggles().size());
-            }
-            if(selectedoptions[currentquestion-1] > 0){
-                togglegroup.getToggles().get(selectedoptions[currentquestion-1]-1).setSelected(true);
+                }
             }
     }
     
@@ -101,6 +164,7 @@ public class FXMLTakeTestViewController implements Initializable {
         for(int i = 0; i < serverconnection.getHardCodedCourses().get(0).getTests().get(0).getQuestions().size(); i++){
             
             Button newbutton = new Button("Question " + (i+1));
+            newbutton.getStyleClass().add("questionbutton");
             newbutton.prefWidthProperty().bind(question_list.widthProperty());
             
             newbutton.setOnAction(new EventHandler<ActionEvent>() {
@@ -122,9 +186,13 @@ public class FXMLTakeTestViewController implements Initializable {
         question_number.setText("Question 1");
         question_name.setText(serverconnection.getHardCodedCourses().get(0).getTests().get(0).getName());
         option_list.getChildren().clear();
- 
-        selectedoptions = new int[serverconnection.getHardCodedCourses().get(0).getTests().get(0).getQuestions().size()];
         
+        selectedoptions = new int[serverconnection.getHardCodedCourses().get(0).getTests().get(0).getQuestions().size()][];
+
+        for(int i = 0; i < serverconnection.getHardCodedCourses().get(0).getTests().get(0).getQuestions().size(); i++){
+            selectedoptions[i] = new int[serverconnection.getHardCodedCourses().get(0).getTests().get(0).getQuestions().get(i).getOptions().size()];
+        }
+
         createButtons();
         createOptions(1);
         
