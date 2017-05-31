@@ -33,7 +33,6 @@ public class FXMLDocumentController implements Initializable {
     private void handleButtonAction(ActionEvent event) throws IOException {
         System.out.println("You clicked me!");
         Parent root = FXMLLoader.load(getClass().getResource("FXMLTakeTestView.fxml"));
-        root.getStylesheets().add(getClass().getResource("taketestview.css").toExternalFo‌​rm());
         Scene s = new Scene(root);
         Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stg.setScene(s);

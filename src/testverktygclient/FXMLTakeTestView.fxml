@@ -10,9 +10,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1000.0" styleClass="anchorwhite" stylesheets="@../../css/taketestview.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygclient.FXMLTakeTestViewController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1000.0" styleClass="anchorwhite" stylesheets="@taketestview.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygclient.FXMLTakeTestViewController">
    <children>
-      <AnchorPane fx:id="question_pane" layoutX="349.0" layoutY="80.0" prefHeight="540.0" prefWidth="641.0" styleClass="anchorwhite" stylesheets="@../../css/taketestview.css">
+      <AnchorPane fx:id="question_pane" layoutX="349.0" layoutY="80.0" prefHeight="540.0" prefWidth="641.0" styleClass="anchorwhite" stylesheets="@taketestview.css">
          <children>
             <Label fx:id="question_text" layoutX="26.0" layoutY="94.0" prefHeight="57.0" prefWidth="589.0" textOverrun="CLIP" wrapText="true">
                <font>
@@ -25,10 +25,10 @@
                   <Font size="50.0" />
                </font>
             </Label>
-            <Button fx:id="finishbutton" layoutX="456.0" layoutY="458.0" mnemonicParsing="false" onAction="#finishTest" prefHeight="47.0" prefWidth="119.0" styleClass="finishbutton" stylesheets="@../../build/classes/testverktygclient/taketestview.css" text="Finish" />
+            <Button fx:id="finishbutton" layoutX="456.0" layoutY="458.0" mnemonicParsing="false" onAction="#finishTest" prefHeight="47.0" prefWidth="119.0" styleClass="finishbutton" stylesheets="@taketestview.css" text="Finish" />
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="80.0" prefWidth="1000.0" styleClass="headerfooter" stylesheets="@../../css/taketestview.css">
+      <AnchorPane prefHeight="80.0" prefWidth="1000.0" styleClass="headerfooter" stylesheets="@taketestview.css">
          <children>
             <Label fx:id="question_name" alignment="CENTER" layoutX="297.0" layoutY="2.0" prefHeight="80.0" prefWidth="459.0" textAlignment="CENTER" textFill="WHITE">
                <font>
@@ -37,7 +37,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutY="620.0" prefHeight="80.0" prefWidth="1000.0" styleClass="headerfooter" stylesheets="@../../css/taketestview.css" />
+      <AnchorPane layoutY="620.0" prefHeight="80.0" prefWidth="1000.0" styleClass="headerfooter" stylesheets="@taketestview.css" />
       <VBox layoutX="14.0" layoutY="80.0" prefHeight="540.0" prefWidth="335.0">
          <children>
             <VBox fx:id="question_list" prefHeight="425.0" prefWidth="295.0">
@@ -47,7 +47,7 @@
             </VBox>
             <HBox prefHeight="82.0" prefWidth="335.0">
                <children>
-                  <Button fx:id="previous_button" mnemonicParsing="false" prefHeight="74.0" prefWidth="139.0" styleClass="nextpreviousbutton" stylesheets="@../../css/taketestview.css" text="≪">
+                  <Button fx:id="previous_button" mnemonicParsing="false" prefHeight="74.0" prefWidth="139.0" styleClass="nextpreviousbutton" stylesheets="@taketestview.css" text="≪">
                      <HBox.margin>
                         <Insets left="15.0" />
                      </HBox.margin>
@@ -55,7 +55,7 @@
                         <Font size="44.0" />
                      </font>
                   </Button>
-                  <Button fx:id="next_button" mnemonicParsing="false" prefHeight="74.0" prefWidth="139.0" styleClass="nextpreviousbutton" stylesheets="@../../css/taketestview.css" text="≫">
+                  <Button fx:id="next_button" mnemonicParsing="false" prefHeight="74.0" prefWidth="139.0" styleClass="nextpreviousbutton" stylesheets="@taketestview.css" text="≫">
                      <HBox.margin>
                         <Insets left="30.0" />
                      </HBox.margin>
