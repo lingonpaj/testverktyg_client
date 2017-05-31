@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygclient.FXMLTestSummaryViewController">
+   <children>
+      <AnchorPane prefHeight="80.0" prefWidth="1000.0" />
+      <Label fx:id="summaryLabel" alignment="CENTER" prefHeight="80.0" prefWidth="1000.0" style="-fx-background-color: DD4814;" text="Summary" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="46.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutY="620.0" prefHeight="80.0" prefWidth="1000.0" style="-fx-background-color: DD4814;" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="46.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutY="79.0" prefHeight="541.0" prefWidth="1000.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="324.0" layoutY="141.0" prefHeight="53.0" prefWidth="352.0" text="Your score">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label fx:id="scoreLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="324.0" layoutY="216.0" prefHeight="105.0" prefWidth="352.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="timeOutOrFinishLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="324.0" layoutY="74.0" prefHeight="53.0" prefWidth="352.0" textFill="RED">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -51,7 +51,7 @@ public class ServerConnection {
         hardCodedQuestions.add(q3);
         
         
-        Test premierLeagueTest = new Test(1, "Premier League Test", hardCodedQuestions, 300);
+        Test premierLeagueTest = new Test(1, "Premier League Test", hardCodedQuestions, 5);
         
         ArrayList<Test> hardCodedTests = new ArrayList();
         hardCodedTests.add(premierLeagueTest);
