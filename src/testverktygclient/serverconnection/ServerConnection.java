@@ -59,7 +59,7 @@ public class ServerConnection {
         hardCodedQuestions.add(q3);
         
         
-        Test premierLeagueTest = new Test(1, "Premier League Test", hardCodedQuestions, 300);
+        Test premierLeagueTest = new Test(1, "Premier League Test", hardCodedQuestions, 5);
         
         ArrayList<Test> hardCodedTests = new ArrayList();
         hardCodedTests.add(premierLeagueTest);
@@ -98,6 +98,17 @@ public class ServerConnection {
             }
         }
         return null;
+    }
+    
+    public CompletedTest getLastCompletedTest(){
+        Student student = new Student();
+        for (int i = 0; i < hardCodedUsers.size(); i++) {
+            if(loggedInUser.getUserId() == hardCodedUsers.get(i).getUserId()){
+                student = (Student) hardCodedUsers.get(i);
+                break;
+            }
+        }
+        return student.getCompletedTests().get(student.getCompletedTests().size()-1);
     }
     
     public void addCompletedTest(CompletedTest newTest) {
