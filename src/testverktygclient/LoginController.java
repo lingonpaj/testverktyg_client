@@ -41,7 +41,6 @@ public class LoginController implements Initializable {
     
     private void loadNextPage(User userToLogin) {
         serverConnection.loggedInUser = userToLogin;
-        
         String loggedInUserType = checkUserType();
         
         try {
@@ -53,9 +52,6 @@ public class LoginController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        //Temporary, will be replaced by loading of page depending of type of user
-        errorLogin.setText(userToLogin.getClass().getSimpleName() + " authorized");
     }
     
     private String checkUserType() {

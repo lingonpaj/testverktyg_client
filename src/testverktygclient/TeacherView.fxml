@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygclient.TeacherController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1000.0" styleClass="white" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygclient.TeacherController">
    <children>
       <ChoiceBox fx:id="studentsBox" layoutX="229.0" layoutY="174.0" prefHeight="25.0" prefWidth="347.0" />
       <TableView fx:id="completedColumn" layoutX="229.0" layoutY="250.0" prefHeight="200.0" prefWidth="441.0">
@@ -21,7 +21,7 @@
           <TableColumn fx:id="maxScoreColumn" prefWidth="101.0" text="maxScore" />
         </columns>
       </TableView>
-      <Button layoutX="619.0" layoutY="174.0" mnemonicParsing="false" text="Create New Test" />
+      <Button layoutX="619.0" layoutY="174.0" mnemonicParsing="false" styleClass="orange-button" stylesheets="@style.css" text="Create New Test" />
       <AnchorPane prefHeight="80.0" prefWidth="1005.0" styleClass="headerfooter" stylesheets="@taketestview.css" />
       <AnchorPane layoutY="630.0" prefHeight="80.0" prefWidth="1005.0" styleClass="headerfooter" stylesheets="@taketestview.css" />
    </children>

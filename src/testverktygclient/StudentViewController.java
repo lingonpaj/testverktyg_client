@@ -78,15 +78,15 @@ public class StudentViewController implements Initializable {
 
         chooseCourseDropDown.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
 
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                System.out.println(oldValue + " " + newValue);
-                int newValueCasted = (int) newValue;
-                selectedCourse = (Course) chooseCourseDropDown.getItems().get(newValueCasted);
+        @Override
+        public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+            System.out.println(oldValue + " " + newValue);
+            int newValueCasted = (int) newValue;
+            selectedCourse = (Course) chooseCourseDropDown.getItems().get(newValueCasted);
 
-                ObservableTestList = FXCollections.observableArrayList(selectedCourse.getTests());
-                availableTestTable.setItems(ObservableTestList);
-            }
+            ObservableTestList = FXCollections.observableArrayList(selectedCourse.getTests());
+            availableTestTable.setItems(ObservableTestList);
+        }
 
         });
         
