@@ -5,21 +5,30 @@
  */
 package testverktygclient;
 
-import java.lang.reflect.Array;
+import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 import testverktygclient.models.CompletedTest;
 import testverktygclient.serverconnection.ServerConnection;
 
@@ -42,15 +51,27 @@ public class FXMLTakeTestViewController implements Initializable {
     Label question_number, question_name, question_text;
     
     @FXML
-    Button next_button, previous_button;
+    Button next_button, previous_button, finishbutton;
     
     ServerConnection serverconnection;
     
     CheckBox[] currentcheckboxes;
+    
+    @FXML
+    private Label timerLabel;
+    
+    Timeline timeline;
+    
+    private static CompletedTest completedtest;
+    private static boolean timeOut = false;
 
+    public static boolean isTimeOut() {
+        return timeOut;
+    }
+    int timeLeft;
     int[][] selectedoptions;
     
-    public void finishTest(){
+    public void finishTest(ActionEvent event) throws IOException{
         int score = 0;
         for (int i = 0; i < selectedoptions.length; i++) {
             System.out.println(selectedoptions[i][0]);
@@ -106,8 +127,42 @@ public class FXMLTakeTestViewController implements Initializable {
         //student view page
         
         //add code here
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLTestSummaryView.fxml"));
+        Scene s = new Scene(root);
+        Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stg.setScene(s);
+        timeline.stop();
+    }
+    public void updateTimerLabel() {
+        String minutes;
+        String seconds;
+        System.out.println(timeLeft);
+        timeLeft--;
+        if (timeLeft / 60 < 10) {
+            minutes = "0" + timeLeft / 60;
+        } else {
+            minutes = "" + timeLeft / 60;
+        }
+        if (timeLeft % 60 < 10) {
+            seconds = "0" + timeLeft % 60;
+
+        } else {
+            seconds = "" + timeLeft % 60;
+        }
+
+        timerLabel.setText("Time left: " + minutes + ":" + seconds);
     }
     
+    public void timer() throws IOException {
+        updateTimerLabel();
+        if (timeLeft == -1) {
+            timeline.stop();
+            timeOut = true;
+            finishbutton.fire();
+            
+        }
+    }
+        
     public void createOptions(int value){
             question_text.setText(serverconnection.testToTake.getQuestions().get(value-1).getQuestion());
             question_number.setText("Question " + value);
@@ -211,6 +266,21 @@ public class FXMLTakeTestViewController implements Initializable {
         for(int i = 0; i < serverconnection.testToTake.getQuestions().size(); i++){
             selectedoptions[i] = new int[serverconnection.testToTake.getQuestions().get(i).getOptions().size()];
         }
+        
+        timeLeft = serverconnection.getHardCodedCourses().get(0).getTests().get(0).getTime()+1;
+        updateTimerLabel();
+
+        timeline = new Timeline(new KeyFrame(
+                Duration.millis(1000),
+                ae -> {
+                    try {
+                        timer();
+                    } catch (IOException ex) {
+                        Logger.getLogger(FXMLTakeTestViewController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }));
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
         
         createButtons();
         createOptions(1);

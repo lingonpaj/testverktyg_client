@@ -3,14 +3,15 @@ package testverktygclient.models;
 import java.util.ArrayList;
 
 public class Test {
-    private int id;
+    private int id, time;
     private String name;
     private ArrayList<Question> questions;
 
     public Test() {}
 
-    public Test(int id, String name, ArrayList<Question> questions) {
+    public Test(int id, String name, ArrayList<Question> questions, int time) {
         this.id = id;
+        this.time = time;
         this.name = name;
         this.questions = questions;
     }
@@ -19,6 +20,14 @@ public class Test {
         return id;
     }
 
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
+    
     public void setId(int id) {
         this.id = id;
     }
