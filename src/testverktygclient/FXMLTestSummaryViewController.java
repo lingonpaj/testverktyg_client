@@ -32,7 +32,7 @@ public class FXMLTestSummaryViewController implements Initializable {
     //serverconnection.getStudent().getTests().get(serverconnection.getStudent().getTests().size()-1);
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        System.out.println(FXMLTakeTestViewController.isTimeOut());
         if (FXMLTakeTestViewController.isTimeOut() == true) {
             timeOutOrFinishLabel.setText("Time is up!");
             scoreLabel.setText("Testname: " + FXMLTakeTestViewController.getCompletedtest().getTestName() + "." + "\n" + "Correct answers: "

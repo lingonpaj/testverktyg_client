@@ -97,7 +97,7 @@ public class FXMLTakeTestViewController implements Initializable {
         Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stg.setScene(s);
         timeline.stop();
-        timeOut = true;
+        
     }
 
     public void createOptions(int value) {
@@ -169,8 +169,9 @@ public class FXMLTakeTestViewController implements Initializable {
         updateTimerLabel();
         if (timeLeft == -1) {
             timeline.stop();
+            timeOut = true;
             finishbutton.fire();
-
+            
         }
     }
 
