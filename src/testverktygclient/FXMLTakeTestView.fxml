@@ -26,6 +26,10 @@
                </font>
             </Label>
             <Button layoutX="456.0" layoutY="458.0" mnemonicParsing="false" onAction="#finishTest" prefHeight="47.0" prefWidth="119.0" styleClass="finishbutton" stylesheets="@../../build/classes/testverktygclient/taketestview.css" text="Finish" />
+            <Label fx:id="timerLabel" layoutX="423.0" layoutY="30.0" prefHeight="57.0" prefWidth="213.0">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="80.0" prefWidth="1000.0" styleClass="headerfooter" stylesheets="@../../css/taketestview.css">

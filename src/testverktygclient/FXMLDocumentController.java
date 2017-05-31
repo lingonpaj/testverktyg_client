@@ -28,7 +28,7 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private Label label;
-    
+          
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException {
         System.out.println("You clicked me!");

@@ -9,6 +9,11 @@ import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -19,6 +24,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 import testverktygclient.models.CompletedTest;
 import testverktygclient.serverconnection.ServerConnection;
 
@@ -43,9 +49,12 @@ public class FXMLTakeTestViewController implements Initializable {
     @FXML
     Button next_button, previous_button;
     
+    @FXML
+    private Label timerLabel;
+    
     ServerConnection serverconnection = new ServerConnection();
  
-    
+    int timeLeft;
     int[] selectedoptions;
     
     public void finishTest(){
@@ -115,6 +124,12 @@ public class FXMLTakeTestViewController implements Initializable {
         }        
     }
     
+    public void timer(){
+        timeLeft--;
+        timerLabel.setText("Time left: " + timeLeft/60 + ":" + timeLeft%60);
+        System.out.println("Time left: " + timeLeft/60 + " minuter");
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ServerConnection serverconnection = new ServerConnection();
@@ -124,6 +139,16 @@ public class FXMLTakeTestViewController implements Initializable {
         option_list.getChildren().clear();
  
         selectedoptions = new int[serverconnection.getHardCodedCourses().get(0).getTests().get(0).getQuestions().size()];
+        
+        timeLeft = serverconnection.getHardCodedCourses().get(0).getTests().get(0).getTime();
+        timerLabel.setText("Time left: " + timeLeft/60 + ":00" );
+
+        
+        Timeline timeline = new Timeline(new KeyFrame(
+        Duration.millis(1000),
+            ae -> timer()));
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
         
         createButtons();
         createOptions(1);
@@ -156,6 +181,6 @@ public class FXMLTakeTestViewController implements Initializable {
                         
                         createOptions(nextquestion);
                     }
-        });
+        });   
+        }
     }    
-}
