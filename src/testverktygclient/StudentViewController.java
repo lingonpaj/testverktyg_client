@@ -10,6 +10,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -45,6 +47,10 @@ public class StudentViewController implements Initializable {
     @FXML
     private Label loggedInAsLabel;
     @FXML
+    private Button startButton;
+    @FXML
+    private Label chooseTest;
+    @FXML
     private TableView<CompletedTest> completedTestTable;
     @FXML
     private TableColumn<Test, String> availableTestColumn;
@@ -54,8 +60,9 @@ public class StudentViewController implements Initializable {
     private ChoiceBox chooseCourseDropDown;
     @FXML
     private TableView<Test> availableTestTable;
-
+    
     private Course selectedCourse;
+    public static Test selectedTest;
 
     public static List<Course> courseArrayList = new ArrayList<>();
     public static List<CompletedTest> completedTestArrayList = new ArrayList<>();
@@ -71,7 +78,7 @@ public class StudentViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+       
         availableTestColumn.setCellValueFactory(new PropertyValueFactory<Test, String>("name"));
         ObservableCourseList = FXCollections.observableArrayList(serverConnection.hardCodedCourses);
         chooseCourseDropDown.setItems(ObservableCourseList);
@@ -89,6 +96,23 @@ public class StudentViewController implements Initializable {
         }
 
         });
+        ObservableTestList = FXCollections.observableArrayList(serverConnection.hardCodedTests);
+        availableTestTable.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                System.out.println(oldValue + " " + newValue);
+                int newValueCasted = (int) newValue;
+                selectedTest = (Test) availableTestTable.getItems().get(newValueCasted);
+
+                
+            }
+
+        });
+        
+        
+        
+        
         
         Student std = (Student) serverConnection.loggedInUser;
         completedTestColumn.setCellValueFactory(new PropertyValueFactory<CompletedTest, String>("TestName"));
@@ -96,6 +120,26 @@ public class StudentViewController implements Initializable {
         completedTestTable.setItems(ObservableCompletedTestList);
         loggedInAsLabel.setText("Logged in as: " + serverConnection.loggedInUser.getFirstName()
                 + " " + serverConnection.loggedInUser.getLastName());
+    }
+    
+    @FXML
+    private void startTest(ActionEvent event) throws IOException   {
+        
+            if(selectedTest == null){
+                chooseTest.setStyle("-fx-text-fill: DD4814");
+                
+            }
+                else{
+                
+                    Parent root = FXMLLoader.load(getClass().getResource("FXMLTakeTextView.fxml"));
+                    Scene s = new Scene(root);
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    stage.setScene(s);
+                    stage.show();
+                    System.out.println(selectedTest);
+               
+                        
+              }      
     }
 
     @FXML

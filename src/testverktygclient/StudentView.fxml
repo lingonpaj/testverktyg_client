@@ -55,7 +55,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </TableView>
-      <Button layoutX="738.0" layoutY="385.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="109.0" styleClass="orange-button" text="Start Test" textAlignment="CENTER" textFill="#111111">
+      <Button fx:id="startButton" layoutX="738.0" layoutY="385.0" mnemonicParsing="false" onAction="#startTest" prefHeight="27.0" prefWidth="109.0" styleClass="orange-button" text="Start Test" textAlignment="CENTER" textFill="#111111">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -63,5 +63,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <Label fx:id="chooseTest" layoutX="576.0" layoutY="412.0" prefHeight="17.0" prefWidth="143.0" styleClass="chooseTest" text="Please choose a test" />
    </children>
 </AnchorPane>
