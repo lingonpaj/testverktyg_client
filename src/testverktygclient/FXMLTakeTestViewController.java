@@ -149,6 +149,7 @@ public class FXMLTakeTestViewController implements Initializable {
     public void updateTimerLabel() {
         String minutes;
         String seconds;
+        System.out.println(timeLeft);
         timeLeft--;
         if (timeLeft / 60 < 10) {
             minutes = "0" + timeLeft / 60;
@@ -185,7 +186,7 @@ public class FXMLTakeTestViewController implements Initializable {
 
         selectedoptions = new int[serverconnection.getHardCodedCourses().get(0).getTests().get(0).getQuestions().size()];
 
-        timeLeft = serverconnection.getHardCodedCourses().get(0).getTests().get(0).getTime();
+        timeLeft = serverconnection.getHardCodedCourses().get(0).getTests().get(0).getTime()+1;
         updateTimerLabel();
 
         timeline = new Timeline(new KeyFrame(
