@@ -127,6 +127,7 @@ public class FXMLTakeTestViewController implements Initializable {
                             }
                         }
                     });
+                    newoption.getStyleClass().add("radiobutton");
                     newoption.setToggleGroup(togglegroup);
                     option_list.getChildren().add(newoption);
                 }
@@ -152,6 +153,7 @@ public class FXMLTakeTestViewController implements Initializable {
                         }
                     });
                     currentcheckboxes[i] = newoption;
+                    newoption.getStyleClass().add("checkbox");
                     option_list.getChildren().add(newoption);
                     if(selectedoptions[currentquestion-1][i] > 0){
                         newoption.setSelected(true);
@@ -160,17 +162,31 @@ public class FXMLTakeTestViewController implements Initializable {
             }
     }
     
+    public void updateSelectedButton(int value){
+        int currentquestion = Integer.parseInt(question_number.getText().replaceAll("[^0-9]", ""));
+        question_list.getChildren().get(currentquestion-1).getStyleClass().remove("questioninactivebutton");
+        question_list.getChildren().get(currentquestion-1).getStyleClass().add("questioninactivebutton");
+        question_list.getChildren().get(value-1).getStyleClass().remove("questioninactivebutton");
+        question_list.getChildren().get(value-1).getStyleClass().add("questionactivebutton");
+    }
+    
     public void createButtons(){
+        question_list.setSpacing(2);
         for(int i = 0; i < serverconnection.getHardCodedCourses().get(0).getTests().get(0).getQuestions().size(); i++){
             
             Button newbutton = new Button("Question " + (i+1));
-            newbutton.getStyleClass().add("questionbutton");
+            if(i == 0){
+                newbutton.getStyleClass().add("questionactivebutton");
+            }else{
+                newbutton.getStyleClass().add("questioninactivebutton");
+            }
             newbutton.prefWidthProperty().bind(question_list.widthProperty());
             
             newbutton.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
                     int value = Integer.parseInt(newbutton.getText().replaceAll("[^0-9]", ""));
+                    updateSelectedButton(value);
                     createOptions(value);
                 }
             });
@@ -186,13 +202,14 @@ public class FXMLTakeTestViewController implements Initializable {
         question_number.setText("Question 1");
         question_name.setText(serverconnection.getHardCodedCourses().get(0).getTests().get(0).getName());
         option_list.getChildren().clear();
+        option_list.setSpacing(10);
         
         selectedoptions = new int[serverconnection.getHardCodedCourses().get(0).getTests().get(0).getQuestions().size()][];
 
         for(int i = 0; i < serverconnection.getHardCodedCourses().get(0).getTests().get(0).getQuestions().size(); i++){
             selectedoptions[i] = new int[serverconnection.getHardCodedCourses().get(0).getTests().get(0).getQuestions().get(i).getOptions().size()];
         }
-
+        
         createButtons();
         createOptions(1);
         
@@ -206,7 +223,7 @@ public class FXMLTakeTestViewController implements Initializable {
                         if(nextquestion > serverconnection.getHardCodedCourses().get(0).getTests().get(0).getQuestions().size()){
                             nextquestion = 1;
                         }
-                        
+                        updateSelectedButton(nextquestion);
                         createOptions(nextquestion);
                     }
         });
@@ -221,7 +238,7 @@ public class FXMLTakeTestViewController implements Initializable {
                         if(nextquestion < 1){
                             nextquestion = serverconnection.getHardCodedCourses().get(0).getTests().get(0).getQuestions().size();
                         }
-                        
+                        updateSelectedButton(nextquestion);
                         createOptions(nextquestion);
                     }
         });
