@@ -22,7 +22,7 @@
         </columns>
       </TableView>
       <Button layoutX="619.0" layoutY="174.0" mnemonicParsing="false" text="Create New Test" />
-      <AnchorPane prefHeight="80.0" prefWidth="1005.0" styleClass="headerfooter" stylesheets="@../../../../../../../../css/taketestview.css" />
-      <AnchorPane layoutY="630.0" prefHeight="80.0" prefWidth="1005.0" styleClass="headerfooter" stylesheets="@../../../../../../../../css/taketestview.css" />
+      <AnchorPane prefHeight="80.0" prefWidth="1005.0" styleClass="headerfooter" stylesheets="@taketestview.css" />
+      <AnchorPane layoutY="630.0" prefHeight="80.0" prefWidth="1005.0" styleClass="headerfooter" stylesheets="@taketestview.css" />
    </children>
 </AnchorPane>
