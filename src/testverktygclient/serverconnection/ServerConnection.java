@@ -16,6 +16,7 @@ public class ServerConnection {
     public ArrayList<User> hardCodedUsers;
     public ArrayList<Course> hardCodedCourses;
     public User loggedInUser;
+   public ArrayList<Test> hardCodedTests = new ArrayList();
     
     //Creates hardcoded users and courses so we can test front end
     private ServerConnection() {
