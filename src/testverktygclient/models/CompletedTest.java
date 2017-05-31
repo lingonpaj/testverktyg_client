@@ -57,4 +57,7 @@ public class CompletedTest {
     public void setTestMaxScore(int testMaxScore) {
         this.testMaxScore = testMaxScore;
     }
+    
+    
 }
+

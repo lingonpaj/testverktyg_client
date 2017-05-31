@@ -44,7 +44,7 @@ public class FXMLTakeTestViewController implements Initializable {
     @FXML
     Button next_button, previous_button;
     
-    ServerConnection serverconnection = new ServerConnection();
+    ServerConnection serverconnection;
     
     CheckBox[] currentcheckboxes;
 
@@ -197,7 +197,7 @@ public class FXMLTakeTestViewController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ServerConnection serverconnection = new ServerConnection();
+        ServerConnection serverconnection = ServerConnection.getInstance();
         question_text.setText(serverconnection.getHardCodedCourses().get(0).getTests().get(0).getQuestions().get(0).getQuestion());
         question_number.setText("Question 1");
         question_name.setText(serverconnection.getHardCodedCourses().get(0).getTests().get(0).getName());

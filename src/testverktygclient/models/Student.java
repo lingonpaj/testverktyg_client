@@ -20,4 +20,9 @@ public class Student extends User {
     public void setCompletedTests(ArrayList<CompletedTest> completedTests) {
         this.completedTests = completedTests;
     }
+    
+    @Override
+    public String toString(){
+        return "User: " + userName + ", Name: " + firstName + " " + lastName;
+    }
 }

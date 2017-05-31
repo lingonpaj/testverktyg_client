@@ -1,0 +1,8 @@
+.white {
+    -fx-background-color: white;
+}
+
+.orange-button {
+    -fx-background-color: DD4814;
+    -fx-text-fill: white;
+}
