@@ -9,10 +9,10 @@ public class CompletedTest {
 
     public CompletedTest() {}
 
-    public CompletedTest(int id, String courseCode, String TestName, 
+    public CompletedTest(int id, String courseName, String TestName, 
             int userScore, int testMaxScore) {
         this.id = id;
-        this.courseName = courseCode;
+        this.courseName = courseName;
         this.TestName = TestName;
         this.userScore = userScore;
         this.testMaxScore = testMaxScore;
@@ -57,5 +57,7 @@ public class CompletedTest {
     public void setTestMaxScore(int testMaxScore) {
         this.testMaxScore = testMaxScore;
     }
+    
+    
 }
 

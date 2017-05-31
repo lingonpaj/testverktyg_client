@@ -1,0 +1,64 @@
+.headerfooter{
+    -fx-background-color: DD4814;
+}
+
+.nextpreviousbutton{
+    -fx-background-color: white;
+    -fx-text-fill: DD4814;
+}
+
+.anchorwhite{
+    -fx-background-color: white;
+}
+
+.finishbutton {
+    -fx-background-color: DD4814;
+    -fx-text-fill: white;
+}
+
+.questionactivebutton {
+    -fx-outer-border: DD4814;
+    -fx-body-color: white;
+    -fx-background-color: 
+         -fx-outer-border, 
+         -fx-body-color;
+    -fx-background-insets: 0,3,4,5;
+    -fx-background-radius: 9,8,5,4;
+    -fx-font-size: 18px;
+    -fx-text-fill: #333333;
+    -fx-effect: dropshadow( three-pass-box , rgba(255,255,255,0.2) , 1, 0.0 , 0 , 1);
+}
+
+.radiobutton {
+    -fx-font-size: 20px;
+}
+
+.radiobutton .radio {
+    -fx-padding: 3px;
+}
+
+.radiobutton .radio .dot{
+    -fx-padding: 5px;
+}
+
+.checkbox > .box > .mark{
+    -fx-padding: 3px;
+}
+
+.checkbox {
+    -fx-font-size: 20px;
+    
+}
+
+.questioninactivebutton {
+    -fx-outer-border: black;
+    -fx-body-color: white;
+    -fx-background-color: 
+         -fx-outer-border, 
+         -fx-body-color;
+    -fx-background-insets: 0,1,4,5;
+    -fx-background-radius: 9,8,5,4;
+    -fx-font-size: 18px;
+    -fx-text-fill: #333333;
+    -fx-effect: dropshadow( three-pass-box , rgba(255,255,255,0.2) , 1, 0.0 , 0 , 1);
+}

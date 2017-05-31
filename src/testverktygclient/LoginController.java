@@ -67,5 +67,4 @@ public class LoginController implements Initializable {
         serverConnection = ServerConnection.getInstance();
     }    
 
-
 }
