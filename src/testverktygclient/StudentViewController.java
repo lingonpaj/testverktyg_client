@@ -128,18 +128,15 @@ public class StudentViewController implements Initializable {
             if(selectedTest == null){
                 chooseTest.setStyle("-fx-text-fill: DD4814");
                 
-            }
-                else{
-                
-                    Parent root = FXMLLoader.load(getClass().getResource("FXMLTakeTextView.fxml"));
-                    Scene s = new Scene(root);
-                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    stage.setScene(s);
-                    stage.show();
-                    System.out.println(selectedTest);
-               
-                        
-              }      
+            } else {
+                serverConnection.testToTake = selectedTest;
+                Parent root = FXMLLoader.load(getClass().getResource("FXMLTakeTestView.fxml"));
+                Scene s = new Scene(root);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(s);
+                stage.show();
+                System.out.println(selectedTest);
+            }      
     }
 
     @FXML

@@ -16,7 +16,8 @@ public class ServerConnection {
     public ArrayList<User> hardCodedUsers;
     public ArrayList<Course> hardCodedCourses;
     public User loggedInUser;
-   public ArrayList<Test> hardCodedTests = new ArrayList();
+    public Test testToTake;
+    public ArrayList<Test> hardCodedTests = new ArrayList();
     
     //Creates hardcoded users and courses so we can test front end
     private ServerConnection() {
@@ -36,7 +37,7 @@ public class ServerConnection {
         hardcodedOptions.add(new Option(2, "Chelsea", false));
         hardcodedOptions.add(new Option(2, "Spurs", false));
         
-        Question q1 = new Question(1, "Wich team doesn't suck?", hardcodedOptions, false);
+        Question q1 = new Question(1, "Which team doesn't suck?", hardcodedOptions, false);
         
         ArrayList<Option> hardcodedOptions2 = new ArrayList();
         hardcodedOptions2.add(new Option(1, "Emirates Stadium", false));
@@ -97,6 +98,15 @@ public class ServerConnection {
             }
         }
         return null;
+    }
+    
+    public void addCompletedTest(CompletedTest newTest) {
+        for (int i = 0; i < hardCodedUsers.size(); i++) {
+            if(loggedInUser.getUserId() == hardCodedUsers.get(i).getUserId()){
+                Student student = (Student) hardCodedUsers.get(i);
+                student.addCompletedTest(newTest);
+            }
+        }
     }
     
 }

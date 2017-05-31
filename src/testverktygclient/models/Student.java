@@ -21,6 +21,10 @@ public class Student extends User {
         this.completedTests = completedTests;
     }
     
+    public void addCompletedTest(CompletedTest newTest) {
+        completedTests.add(newTest);
+    }
+    
     @Override
     public String toString(){
         return "User: " + userName + ", Name: " + firstName + " " + lastName;
