@@ -102,7 +102,7 @@ public class ServerConnection implements Serializable{
                 .path(userName).path(password).request(MediaType.APPLICATION_JSON).get(Student.class);
         
         if(loggedInStudent == null) {
-            Teacher loggedInTeacher = client.target("http://localhost:8080/TestVerktygServer/webapi/teachers")
+            Teacher loggedInTeacher = client.target("http://localhost:8080/TestVerktygServer/webapi/users")
                 .path(userName).path(password).request(MediaType.APPLICATION_JSON).get(Teacher.class);
             client.close();
             return loggedInTeacher;

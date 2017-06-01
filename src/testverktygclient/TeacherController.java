@@ -107,8 +107,6 @@ public class TeacherController implements Initializable {
                     System.out.println(foundGuy.toString());
                     ArrayList<CompletedTest> completedTests = foundGuy.getCompletedTests();
                     
-                    System.out.println("This is compeltedTests: " + completedTests.toString());
-                    System.out.println(completedTests.get(0).getCourseName());
                     
                     ObservableList<CompletedTest> completedList = FXCollections.observableArrayList();
                     for(CompletedTest c : completedTests){
