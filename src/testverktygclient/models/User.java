@@ -3,7 +3,7 @@ package testverktygclient.models;
 import java.io.Serializable;
 
 public abstract class User implements Serializable{
-    protected int userId;
+    protected int id;
     protected String userName;
     protected String password;
     protected String firstName;
@@ -11,20 +11,20 @@ public abstract class User implements Serializable{
     
     public User() {}
 
-    public User(int userId, String userName, String password, String firstName, String lastName) {
-        this.userId = userId;
+    public User(int id, String userName, String password, String firstName, String lastName) {
+        this.id = id;
         this.userName = userName;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getId() {
+        return id;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUserName() {

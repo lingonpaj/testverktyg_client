@@ -106,9 +106,9 @@ public class FXMLTakeTestViewController implements Initializable {
         completedTest.setTestMaxScore(serverconnection.testToTake.getQuestions().size());
         
         
-        System.out.println(serverconnection.testToTake.getName());
+        System.out.println("ID JAG VILL SKICKA IN I METOD" + serverconnection.loggedInUser.getId());
         
-        serverconnection.addCompletedTest(completedTest, serverconnection.loggedInUser.getUserId());
+        serverconnection.addCompletedTest(completedTest, serverconnection.loggedInUser.getId());
         
         System.out.println("Test completed: " + completedTest.getTestName() + completedTest.getUserScore() + "/" + completedTest.getTestMaxScore());
         
