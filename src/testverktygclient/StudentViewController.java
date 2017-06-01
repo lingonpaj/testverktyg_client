@@ -51,7 +51,22 @@ public class StudentViewController implements Initializable {
     @FXML
     private TableColumn<Test, String> availableTestColumn;
     @FXML
-    private TableColumn<CompletedTest, String> completedTestColumn;
+    private TableColumn<CompletedTest, String> completedCourseNameColumn;
+    
+    @FXML
+    private TableColumn<CompletedTest, String> completedTestNameColumn;
+    
+    @FXML
+    private TableColumn<CompletedTest, Integer> completedTestPointsColumn;
+    
+    @FXML
+    private TableColumn<CompletedTest, Integer> completedTestMaxColumn;
+    
+    //fx:id="completedCourseNameColumn" prefWidth="131.0" text="Course Name" />
+    //<TableColumn fx:id="completedTestNameColumn" prefWidth="152.0" text="Test Name" />
+    //<TableColumn fx:id="completedTestPointsColumn" prefWidth="54.0" text="Points" />
+    //<TableColumn fx:id="completedTestMaxColumn"
+    
     @FXML
     private ChoiceBox chooseCourseDropDown;
     @FXML
@@ -111,12 +126,15 @@ public class StudentViewController implements Initializable {
         
         
         Student std = (Student) serverConnection.loggedInUser;
-        completedTestColumn.setCellValueFactory(new PropertyValueFactory("CompletedTest"));
-        ObservableCompletedTestList = FXCollections.observableArrayList(std.getCompletedTests());
-        completedTestTable.setItems(ObservableCompletedTestList);
-        loggedInAsLabel.setText("Logged in as: " + serverConnection.loggedInUser.getFirstName()
-                + " " + serverConnection.loggedInUser.getLastName());
+        
+        //String courseName, String TestName, 
+        //    int userScore, int testMaxScore
+        completedCourseNameColumn.setCellValueFactory(new PropertyValueFactory("courseName"));
+        completedTestNameColumn.setCellValueFactory(new PropertyValueFactory("TestName"));
+        completedTestPointsColumn.setCellValueFactory(new PropertyValueFactory("userScore"));
+        completedTestMaxColumn.setCellValueFactory(new PropertyValueFactory("testMaxScore"));
     }
+    
     
     @FXML
     private void startTest(ActionEvent event) throws IOException   {
