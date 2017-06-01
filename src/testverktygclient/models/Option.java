@@ -1,6 +1,8 @@
 package testverktygclient.models;
 
-public class Option {
+import java.io.Serializable;
+
+public class Option implements Serializable{
     private int id;
     private String optionText;
     private boolean correct;

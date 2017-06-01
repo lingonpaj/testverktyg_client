@@ -1,11 +1,14 @@
 package testverktygclient.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Student extends User {
+public class Student extends User implements Serializable{
     private ArrayList<CompletedTest> completedTests;
 
-    public Student() {}
+    public Student() {
+        super();
+    }
 
     public Student(ArrayList<CompletedTest> completedTests, int userId, 
             String userName, String password, String firstName, String lastName) {

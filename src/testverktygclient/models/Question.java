@@ -1,8 +1,9 @@
 package testverktygclient.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Question {
+public class Question implements Serializable{
     private int id;
     private boolean multi;
     private String question;

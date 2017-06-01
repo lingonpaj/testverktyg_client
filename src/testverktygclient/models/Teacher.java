@@ -1,8 +1,12 @@
 package testverktygclient.models;
 
-public class Teacher extends User{
+import java.io.Serializable;
 
-    public Teacher() {}
+public class Teacher extends User implements Serializable{
+
+    public Teacher() {
+        super();
+    }
 
     public Teacher(int userId, String userName, String password, 
             String firstName, String lastName) {

@@ -1,7 +1,12 @@
 package testverktygclient.serverconnection;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.core.GenericType;
+import javax.ws.rs.core.MediaType;
 import testverktygclient.models.CompletedTest;
 import testverktygclient.models.Course;
 import testverktygclient.models.Option;
@@ -11,7 +16,7 @@ import testverktygclient.models.Teacher;
 import testverktygclient.models.Test;
 import testverktygclient.models.User;
 
-public class ServerConnection {
+public class ServerConnection implements Serializable{
     private static ServerConnection instance;
     //HARDCODED to test frontend
     public ArrayList<User> hardCodedUsers;
@@ -93,12 +98,21 @@ public class ServerConnection {
 
     public User loginAuthentication(String userName, String password) {
         //Before we have a server - loop through hardcoded list
-        for(User user : hardCodedUsers) {
-            if(userName.equals(user.getUserName()) && password.equals(user.getPassword())) {
-                return user;
-            }
+//        for(User user : hardCodedUsers) {
+//            if(userName.equals(user.getUserName()) && password.equals(user.getPassword())) {
+//                return user;
+//            }
+//        }
+        Client client = ClientBuilder.newClient();
+        User loggedInUser = client.target("http://localhost:8080/TestVerktygServer/webapi/users")
+                .path(userName).path(password).request(MediaType.APPLICATION_JSON).get(Teacher.class);
+        
+        if(loggedInUser == null) {
+            loggedInUser = client.target("http://localhost:8080/TestVerktygServer/webapi/users")
+                .path(userName).path(password).request(MediaType.APPLICATION_JSON).get(Student.class);
         }
-        return null;
+        
+        return loggedInUser;
     }
     
     public CompletedTest getLastCompletedTest(){

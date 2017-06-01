@@ -1,8 +1,9 @@
 package testverktygclient.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Course {
+public class Course implements Serializable{
     private int id;
     private String name;
     private ArrayList<Test> tests;

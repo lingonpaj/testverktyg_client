@@ -1,6 +1,8 @@
 package testverktygclient.models;
 
-public class CompletedTest {
+import java.io.Serializable;
+
+public class CompletedTest implements Serializable{
     private int id;
     private String courseName;
     private String TestName;
