@@ -10,3 +10,27 @@
 .chooseTest{
     -fx-text-fill: white;
 }
+
+.table-view .column-header{
+    -fx-background-color: DD4814;
+    -fx-border-radius: 100;
+}
+
+.chooseDropDown:focused{
+    -fx-background-color: -fx-focus-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+    -fx-background-radius: 6.4, 4, 5, 3;
+    -fx-background-insets: -1.4, 0, 1, 2;
+    -fx-focus-color: DD4814;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-color: DD4814;
+    -fx-border-color: DD4814;
+}
+
+.table-row-cell:selected .table-cell {
+    -fx-background-color: #999999;
+    -fx-focus-color: DD4814;
+}

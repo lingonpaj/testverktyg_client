@@ -30,6 +30,6 @@ public class Student extends User implements Serializable{
     
     @Override
     public String toString(){
-        return "User: " + userName + ", Name: " + firstName + " " + lastName;
+        return "Student name: " + firstName + " " + lastName;
     }
 }
