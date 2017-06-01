@@ -10,8 +10,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -47,8 +45,6 @@ public class StudentViewController implements Initializable {
     @FXML
     private Label loggedInAsLabel;
     @FXML
-    private Button startButton;
-    @FXML
     private Label chooseTest;
     @FXML
     private TableView<CompletedTest> completedTestTable;
@@ -80,7 +76,7 @@ public class StudentViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
        
         availableTestColumn.setCellValueFactory(new PropertyValueFactory<Test, String>("name"));
-        ObservableCourseList = FXCollections.observableArrayList(serverConnection.hardCodedCourses);
+        ObservableCourseList = FXCollections.observableArrayList(serverConnection.getCourses());
         chooseCourseDropDown.setItems(ObservableCourseList);
 
         chooseCourseDropDown.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {

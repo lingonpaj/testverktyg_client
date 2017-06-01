@@ -75,7 +75,6 @@ public class ServerConnection implements Serializable{
         
         //Adding the course
         hardCodedCourses.add(new Course(1, "Basic Footall", hardCodedTests));
-        hardCodedCourses.add(new Course(2, "testthingy", hardCodedTests));
         
     }
 
@@ -133,16 +132,18 @@ public class ServerConnection implements Serializable{
     }
     
     public List<Student> getStudents() {
-//        ArrayList<Student> students = new ArrayList();
-//        for (int i = 0; i < hardCodedUsers.size(); i++) {
-//            if(hardCodedUsers.get(i).getClass() == Student.class){
-//                students.add((Student) hardCodedUsers.get(i));
-//            }
-//        }
         Client client = ClientBuilder.newClient();
         ArrayList<Student> students;
         students = client.target("http://localhost:8080/TestVerktygServer/webapi/students")
                 .request(MediaType.APPLICATION_JSON).get(new GenericType<ArrayList<Student>>(){});
         return students;
+    }
+    
+    public List<Course> getCourses() {
+        Client client = ClientBuilder.newClient();
+        ArrayList<Course> courses;
+        courses = client.target("http://localhost:8080/TestVerktygServer/webapi/courses")
+                .request(MediaType.APPLICATION_JSON).get(new GenericType<ArrayList<Course>>(){});
+        return courses;
     }
 }
