@@ -253,7 +253,7 @@ public class FXMLTakeTestViewController implements Initializable {
             selectedoptions[i] = new int[serverconnection.testToTake.getQuestions().get(i).getAnswers().size()];
         }
         
-        timeLeft = serverconnection.getHardCodedCourses().get(0).getTests().get(0).getTime()+1;
+        timeLeft = serverconnection.testToTake.getTime();
         updateTimerLabel();
 
         timeline = new Timeline(new KeyFrame(
