@@ -97,12 +97,6 @@ public class ServerConnection implements Serializable{
     }
 
     public User loginAuthentication(String userName, String password) {
-        //Before we have a server - loop through hardcoded list
-//        for(User user : hardCodedUsers) {
-//            if(userName.equals(user.getUserName()) && password.equals(user.getPassword())) {
-//                return user;
-//            }
-//        }
         Client client = ClientBuilder.newClient();
         User loggedInUser = client.target("http://localhost:8080/TestVerktygServer/webapi/users")
                 .path(userName).path(password).request(MediaType.APPLICATION_JSON).get(Teacher.class);
@@ -111,6 +105,7 @@ public class ServerConnection implements Serializable{
             loggedInUser = client.target("http://localhost:8080/TestVerktygServer/webapi/users")
                 .path(userName).path(password).request(MediaType.APPLICATION_JSON).get(Student.class);
         }
+        client.close();
         
         return loggedInUser;
     }
@@ -136,12 +131,16 @@ public class ServerConnection implements Serializable{
     }
     
     public List<Student> getStudents() {
-        ArrayList<Student> students = new ArrayList();
-        for (int i = 0; i < hardCodedUsers.size(); i++) {
-            if(hardCodedUsers.get(i).getClass() == Student.class){
-                students.add((Student) hardCodedUsers.get(i));
-            }
-        }
+//        ArrayList<Student> students = new ArrayList();
+//        for (int i = 0; i < hardCodedUsers.size(); i++) {
+//            if(hardCodedUsers.get(i).getClass() == Student.class){
+//                students.add((Student) hardCodedUsers.get(i));
+//            }
+//        }
+        Client client = ClientBuilder.newClient();
+        ArrayList<Student> students;
+        students = client.target("http://localhost:8080/TestVerktygServer/webapi/students")
+                .request(MediaType.APPLICATION_JSON).get(new GenericType<ArrayList<Student>>(){});
         return students;
     }
 }

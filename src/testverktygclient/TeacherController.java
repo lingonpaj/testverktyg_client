@@ -85,35 +85,6 @@ public class TeacherController implements Initializable {
         
     }
     
-    public void spawnATest(){
-        ObservableList<CompletedTest> completedList = FXCollections.observableArrayList();
-        
-        CompletedTest newTest = new CompletedTest(1, "404", "PHP Test", 1, 2);
-        CompletedTest newTest1 = new CompletedTest(1, "500", "PHP Test 2", 10, 40);
-        ArrayList<CompletedTest> completedTests = new ArrayList<CompletedTest>();
-        completedTests.add(newTest);
-        completedTests.add(newTest1);
-        
-        Student newGuy = new Student(completedTests, 1, "'Guy'", "pw", "Kyle", "Jenkins");
-        
-        //Load in user from DB
-        //Load in completed test for user from DB
-        //Set them to respective loaded guy
-        newGuy.setCompletedTests(completedTests);
-        
-        
-        
-        ArrayList<CompletedTest> completedTests2 = new ArrayList<CompletedTest>();
-        Student secondGuy = new Student(completedTests2, 2, "'Derpy'", "lol", "Stan", "Brukowich");
-        CompletedTest newTest2 = new CompletedTest(3, "500", "JS Test", 1, 2);
-        completedTests2.add(newTest2);
-        
-        secondGuy.setCompletedTests(completedTests2);
-  
-        //Just assign them to the box
-        studentsBox.setItems(FXCollections.observableArrayList(newGuy, secondGuy)); 
-    }
-    
     public void setCellValueFactories(){
         courseColumn.setCellValueFactory(new PropertyValueFactory<CompletedTest, String>("courseName"));
         testColumn.setCellValueFactory(new PropertyValueFactory<CompletedTest, String>("TestName"));
@@ -137,6 +108,7 @@ public class TeacherController implements Initializable {
                     ArrayList<CompletedTest> completedTests = foundGuy.getCompletedTests();
                     
                     System.out.println("This is compeltedTests: " + completedTests.toString());
+                    System.out.println(completedTests.get(0).getCourseName());
                     
                     ObservableList<CompletedTest> completedList = FXCollections.observableArrayList();
                     for(CompletedTest c : completedTests){

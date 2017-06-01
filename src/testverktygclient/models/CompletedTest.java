@@ -32,7 +32,7 @@ public class CompletedTest implements Serializable{
         return courseName;
     }
 
-    public void setCourseCode(String courseName) {
+    public void setCourseName(String courseName) {
         this.courseName = courseName;
     }
 
@@ -59,7 +59,6 @@ public class CompletedTest implements Serializable{
     public void setTestMaxScore(int testMaxScore) {
         this.testMaxScore = testMaxScore;
     }
-    
     
 }
 
