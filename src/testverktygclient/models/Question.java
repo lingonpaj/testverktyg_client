@@ -6,13 +6,15 @@ public class Question {
     private int id;
     private String question;
     private ArrayList<Option> options;
+    private boolean multi;
     
     public Question() {}
 
-    public Question(int id, String questionText, ArrayList<Option> options) {
+    public Question(int id, String questionText, ArrayList<Option> options, boolean multi) {
         this.id = id;
         this.question = questionText;
         this.options = options;
+        this.multi = multi;
     }
 
     public int getId() {

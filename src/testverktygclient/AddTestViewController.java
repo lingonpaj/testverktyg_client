@@ -68,7 +68,7 @@ public class AddTestViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         setCellValueFactories();
         setText();
-        spawnList();
+        //spawnList();
     }   
     
     public void setText(){
@@ -120,16 +120,17 @@ public class AddTestViewController implements Initializable {
     }
     
     public void spawnList(){
-        ObservableList<QuestionOptions> questionList2 = FXCollections.observableArrayList();
-        Option option1 = new Option(1, "blergh", false);
-        Option option2 = new Option(2, "JOHN CEENA", true);
-        Option option3 = new Option(3, "CORNFLAKES GOD", true);
-        Option option4 = new Option(4, "bla", false);
-        QuestionOptions q = new QuestionOptions("Who is the sun?!", option1, option2, option3, option4);
-        questionList2.add(q);
-        questionsTable.setItems(questionList2);
-        questionsTable.refresh();
+//        ObservableList<QuestionOptions> questionList2 = FXCollections.observableArrayList();
+//        Option option1 = new Option(1, "blergh", false);
+//        Option option2 = new Option(2, "JOHN CEENA", true);
+//        Option option3 = new Option(3, "CORNFLAKES GOD", true);
+//        Option option4 = new Option(4, "bla", false);
+//
+//        questionList2.add(q);
+//        questionsTable.setItems(questionList2);
+//        questionsTable.refresh();
         
+    //}
     }
     
     public void updateList(ArrayList<QuestionOptions> input){
@@ -184,7 +185,9 @@ public class AddTestViewController implements Initializable {
                     optionsTouse.add(q.getOption3());
                     optionsTouse.add(q.getOption4());
                     
-                    Question toAdd = new Question(1,name, optionsTouse);
+                    boolean multi = q.getMulti();
+                    
+                    Question toAdd = new Question(1,name, optionsTouse, multi);
                     toFill.add(toAdd);
                 }
                 Test testToReturn = new Test(1,TestNameField.getText(), toFill, getTime());

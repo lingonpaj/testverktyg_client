@@ -30,14 +30,14 @@ public class ServerConnection {
         hardcodedOptions.add(new Option(2, "Chelsea", false));
         hardcodedOptions.add(new Option(2, "Spurs", false));
         
-        Question q1 = new Question(1, "Wich team doesn't suck?", hardcodedOptions);
+        Question q1 = new Question(1, "Wich team doesn't suck?", hardcodedOptions, false);
         
         ArrayList<Option> hardcodedOptions2 = new ArrayList();
         hardcodedOptions2.add(new Option(1, "Emirates Stadium", false));
         hardcodedOptions2.add(new Option(2, "Old Trafford", true));
         hardcodedOptions2.add(new Option(2, "White Hart Lane", false));
         
-        Question q2 = new Question(2, "What is the name of Manchester Uniteds home arena?", hardcodedOptions2);
+        Question q2 = new Question(2, "What is the name of Manchester Uniteds home arena?", hardcodedOptions2, false);
         
         ArrayList<Question> hardCodedQuestions = new ArrayList();
         hardCodedQuestions.add(q1);

@@ -16,13 +16,15 @@ public class QuestionOptions {
     private String question;
     private String correct = "";
     public boolean option1Correct, option2Correct, option3Correct, option4Correct = false;
+    private boolean multi;
     
-    public QuestionOptions(String question, Option option1, Option option2, Option option3, Option option4){
+    public QuestionOptions(String question, Option option1, Option option2, Option option3, Option option4, boolean multi){
         this.question = question;
         this.option1 = option1;
         this.option2 = option2;
         this.option3 = option3;
         this.option4 = option4;
+        this.multi = multi;
         
         if(option1.isCorrect()){
             correct += "(1)";
@@ -42,6 +44,13 @@ public class QuestionOptions {
         }
     }
     
+    public boolean getMulti(){
+        return multi;
+    }
+    
+    public void setMulti(){
+        this.multi = multi;
+    }
     public boolean getoption1Correct(){
         return option1Correct;
     }

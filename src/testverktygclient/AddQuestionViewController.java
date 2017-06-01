@@ -135,20 +135,20 @@ public class AddQuestionViewController implements Initializable {
             
                 case 1:
                     
-                    toAdd.add(new QuestionOptions(QuestionNameField.getText(), ourOptions.get(0), option2, option3, option4));
+                    toAdd.add(new QuestionOptions(QuestionNameField.getText(), ourOptions.get(0), option2, option3, option4, multi));
                     AddTestViewController.toReturn = toAdd;
                     //AddTestViewController.toReturn
                     break;
                 case 2:
-                    toAdd.add(new QuestionOptions(QuestionNameField.getText(), ourOptions.get(0), ourOptions.get(1), option3, option4));
+                    toAdd.add(new QuestionOptions(QuestionNameField.getText(), ourOptions.get(0), ourOptions.get(1), option3, option4, multi));
                     AddTestViewController.toReturn = toAdd;
                     break;
                 case 3:
-                    toAdd.add(new QuestionOptions(QuestionNameField.getText(), ourOptions.get(0), ourOptions.get(1), ourOptions.get(2), option4));
+                    toAdd.add(new QuestionOptions(QuestionNameField.getText(), ourOptions.get(0), ourOptions.get(1), ourOptions.get(2), option4, multi));
                     AddTestViewController.toReturn = toAdd;
                     break;
                 case 4:
-                    toAdd.add(new QuestionOptions(QuestionNameField.getText(), ourOptions.get(0), ourOptions.get(1), ourOptions.get(2), ourOptions.get(3)));
+                    toAdd.add(new QuestionOptions(QuestionNameField.getText(), ourOptions.get(0), ourOptions.get(1), ourOptions.get(2), ourOptions.get(3), multi));
                     AddTestViewController.toReturn = toAdd;
                     break;
         }
