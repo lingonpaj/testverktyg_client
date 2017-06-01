@@ -27,6 +27,6 @@ public class Student extends User {
     
     @Override
     public String toString(){
-        return "User: " + userName + ", Name: " + firstName + " " + lastName;
+        return "Student name: " + firstName + " " + lastName;
     }
 }
