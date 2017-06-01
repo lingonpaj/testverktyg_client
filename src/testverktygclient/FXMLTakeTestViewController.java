@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package testverktygclient;
 
 import java.io.IOException;
@@ -32,18 +27,7 @@ import javafx.util.Duration;
 import testverktygclient.models.CompletedTest;
 import testverktygclient.serverconnection.ServerConnection;
 
-/**
- * FXML Controller class
- *
- * @author Alexander
- */
 public class FXMLTakeTestViewController implements Initializable {
-
-    /**
-     * Initializes the controller class.
-     */
-
-    
     @FXML
     VBox question_list, option_list;
         
@@ -83,8 +67,8 @@ public class FXMLTakeTestViewController implements Initializable {
             if(serverconnection.testToTake.getQuestions().get(i).isMulti()){ 
                 for(int n = 0; n < selectedoptions[i].length; n++){
                     System.out.println("what is this? " + selectedoptions[i][n] + "loop: " + n);
-                    System.out.println(serverconnection.testToTake.getQuestions().get(i).getOptions().get(n).isCorrect());
-                    if(serverconnection.testToTake.getQuestions().get(i).getOptions().get(n).isCorrect()){
+                    System.out.println(serverconnection.testToTake.getQuestions().get(i).getAnswers().get(n).isCorrect());
+                    if(serverconnection.testToTake.getQuestions().get(i).getAnswers().get(n).isCorrect()){
 
                         if(selectedoptions[i][n] > 0){
                             multiscore++;
@@ -107,7 +91,7 @@ public class FXMLTakeTestViewController implements Initializable {
                 if((selectedoptions[i][0]) > 0){
                     for (int j = 0; j < selectedoptions[i].length; j++) {
                         if(selectedoptions[i][0]-1 == j){
-                            if(serverconnection.testToTake.getQuestions().get(i).getOptions().get(j).isCorrect()){
+                            if(serverconnection.testToTake.getQuestions().get(i).getAnswers().get(j).isCorrect()){
                                 score++;
                             }   
                         }
@@ -174,8 +158,8 @@ public class FXMLTakeTestViewController implements Initializable {
             
             if(!serverconnection.testToTake.getQuestions().get(value-1).isMulti()){
                 ToggleGroup togglegroup = new ToggleGroup();
-                for(int i = 0; i < serverconnection.testToTake.getQuestions().get(value-1).getOptions().size(); i++){
-                    RadioButton newoption = new RadioButton(serverconnection.testToTake.getQuestions().get(value-1).getOptions().get(i).getOptionText());
+                for(int i = 0; i < serverconnection.testToTake.getQuestions().get(value-1).getAnswers().size(); i++){
+                    RadioButton newoption = new RadioButton(serverconnection.testToTake.getQuestions().get(value-1).getAnswers().get(i).getOptionText());
                     newoption.setOnAction(new EventHandler<ActionEvent>(){
                         @Override
                         public void handle(ActionEvent event) {
@@ -194,9 +178,9 @@ public class FXMLTakeTestViewController implements Initializable {
                     togglegroup.getToggles().get(selectedoptions[currentquestion-1][0]-1).setSelected(true);
                 }
             }else{
-                currentcheckboxes = new CheckBox[serverconnection.testToTake.getQuestions().get(value-1).getOptions().size()];
-                for(int i = 0; i < serverconnection.testToTake.getQuestions().get(value-1).getOptions().size(); i++){
-                    CheckBox newoption = new CheckBox(serverconnection.testToTake.getQuestions().get(value-1).getOptions().get(i).getOptionText());
+                currentcheckboxes = new CheckBox[serverconnection.testToTake.getQuestions().get(value-1).getAnswers().size()];
+                for(int i = 0; i < serverconnection.testToTake.getQuestions().get(value-1).getAnswers().size(); i++){
+                    CheckBox newoption = new CheckBox(serverconnection.testToTake.getQuestions().get(value-1).getAnswers().get(i).getOptionText());
                     newoption.setOnAction(new EventHandler<ActionEvent>(){
                         @Override
                         public void handle(ActionEvent event) {
@@ -266,7 +250,7 @@ public class FXMLTakeTestViewController implements Initializable {
         selectedoptions = new int[serverconnection.testToTake.getQuestions().size()][];
 
         for(int i = 0; i < serverconnection.testToTake.getQuestions().size(); i++){
-            selectedoptions[i] = new int[serverconnection.testToTake.getQuestions().get(i).getOptions().size()];
+            selectedoptions[i] = new int[serverconnection.testToTake.getQuestions().get(i).getAnswers().size()];
         }
         
         timeLeft = serverconnection.getHardCodedCourses().get(0).getTests().get(0).getTime()+1;

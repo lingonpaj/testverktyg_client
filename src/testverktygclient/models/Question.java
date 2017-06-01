@@ -7,15 +7,15 @@ public class Question implements Serializable{
     private int id;
     private boolean multi;
     private String question;
-    private ArrayList<Answer> options;
+    private ArrayList<Answer> answers;
 
     public Question() {}
 
-    public Question(int id, String questionText, ArrayList<Answer> options, boolean multi) {
+    public Question(int id, String questionText, ArrayList<Answer> answers, boolean multi) {
         this.id = id;
         this.multi = multi;
         this.question = questionText;
-        this.options = options;
+        this.answers = answers;
     }
 
     public boolean isMulti() {
@@ -25,8 +25,6 @@ public class Question implements Serializable{
     public void setMulti(boolean multi) {
         this.multi = multi;
     }
-
-    
     
     public int getId() {
         return id;
@@ -44,11 +42,11 @@ public class Question implements Serializable{
         this.question = question;
     }
 
-    public ArrayList<Answer> getOptions() {
-        return options;
+    public ArrayList<Answer> getAnswers() {
+        return answers;
     }
 
-    public void setOptions(ArrayList<Answer> options) {
-        this.options = options;
+    public void setAnswers(ArrayList<Answer> answers) {
+        this.answers = answers;
     }
 }
