@@ -99,15 +99,18 @@ public class FXMLTakeTestViewController implements Initializable {
                 }
             }
         }
-        CompletedTest completedtest = new CompletedTest(0, serverconnection.getHardCodedCourses().get(0).getName(), 
-                serverconnection.testToTake.getName(), score, 
-                serverconnection.testToTake.getQuestions().size());
+        CompletedTest completedTest = new CompletedTest();
+        completedTest.setCourseName(serverconnection.courseNameOfTest);
+        completedTest.setUserScore(score);
+        completedTest.setTestName(serverconnection.testToTake.getName());
+        completedTest.setTestMaxScore(serverconnection.testToTake.getQuestions().size());
+        
         
         System.out.println(serverconnection.testToTake.getName());
         
-        serverconnection.addCompletedTest(completedtest);
+        serverconnection.addCompletedTest(completedTest, serverconnection.loggedInUser.getUserId());
         
-        System.out.println("Test completed: " + completedtest.getTestName() + completedtest.getUserScore() + "/" + completedtest.getTestMaxScore());
+        System.out.println("Test completed: " + completedTest.getTestName() + completedTest.getUserScore() + "/" + completedTest.getTestMaxScore());
         
         //below the test should be added to the student currently logged in, then it should load the previous
         //student view page

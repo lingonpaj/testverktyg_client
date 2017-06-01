@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 import testverktygclient.models.CompletedTest;
@@ -22,6 +23,7 @@ public class ServerConnection implements Serializable{
     public ArrayList<User> hardCodedUsers;
     public ArrayList<Course> hardCodedCourses;
     public User loggedInUser;
+    public String courseNameOfTest;
     public Test testToTake;
     public ArrayList<Test> hardCodedTests = new ArrayList();
     
@@ -122,13 +124,10 @@ public class ServerConnection implements Serializable{
         return student.getCompletedTests().get(student.getCompletedTests().size()-1);
     }
     
-    public void addCompletedTest(CompletedTest newTest) {
-        for (int i = 0; i < hardCodedUsers.size(); i++) {
-            if(loggedInUser.getUserId() == hardCodedUsers.get(i).getUserId()){
-                Student student = (Student) hardCodedUsers.get(i);
-                student.addCompletedTest(newTest);
-            }
-        }
+    public void addCompletedTest(CompletedTest newTest, int studentId) {
+        Client client = ClientBuilder.newClient();
+        client.target("http://localhost:8080/TestVerktygServer/webapi/students").path("" + studentId).path("completedtests")
+                .request(MediaType.APPLICATION_JSON).post(Entity.json(newTest), CompletedTest.class);
     }
     
     public List<Student> getStudents() {
