@@ -1,6 +1,7 @@
 package testverktygclient.serverconnection;
 
 import java.util.ArrayList;
+import java.util.List;
 import testverktygclient.models.CompletedTest;
 import testverktygclient.models.Course;
 import testverktygclient.models.Option;
@@ -28,8 +29,8 @@ public class ServerConnection {
         ArrayList<CompletedTest> hardCodeCTest = new ArrayList();
         hardCodeCTest.add(completedTest);
         //Adding users
-        hardCodedUsers.add(new Student(hardCodeCTest, 1, "skarl", "password1", "Sofia", "Karlsson"));
-        hardCodedUsers.add(new Teacher(2, "kjoha", "password2", "Kalle", "Johansson"));
+        hardCodedUsers.add(new Student(hardCodeCTest, 1, "skarl", "1", "Sofia", "Karlsson"));
+        hardCodedUsers.add(new Teacher(2, "kjoha", "2", "Kalle", "Johansson"));
         
         //Adding courses (that has test->Questions->Options)
         ArrayList<Option> hardcodedOptions = new ArrayList();
@@ -120,4 +121,13 @@ public class ServerConnection {
         }
     }
     
+    public List<Student> getStudents() {
+        ArrayList<Student> students = new ArrayList();
+        for (int i = 0; i < hardCodedUsers.size(); i++) {
+            if(hardCodedUsers.get(i).getClass() == Student.class){
+                students.add((Student) hardCodedUsers.get(i));
+            }
+        }
+        return students;
+    }
 }

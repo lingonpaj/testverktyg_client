@@ -5,26 +5,36 @@
  */
 package testverktygclient;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import testverktygclient.models.CompletedTest;
 import testverktygclient.models.Student;
-import testverktygclient.models.Test;
+import testverktygclient.serverconnection.ServerConnection;
 
 /**
  *
  * @author User
  */
 public class TeacherController implements Initializable {
+    @FXML
+    private Label loggedInAsLabel;
     
     @FXML
     private TableView<CompletedTest> completedColumn;
@@ -45,13 +55,34 @@ public class TeacherController implements Initializable {
     @FXML
     private ChoiceBox studentsBox;
     
+    private ServerConnection serverConnection;
     
+    @FXML
+    private void signOut(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        Scene s = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow(); // Hämta knappen, hämta stagen
+        stage.setScene(s); // byter ut gamla stage mot nya, sätt en ny stage
+        stage.show();
+    }
+    
+    private void initLoggedInUser() {
+        loggedInAsLabel.setText("Logged in as: " + serverConnection.loggedInUser.getFirstName()
+                + " " + serverConnection.loggedInUser.getLastName());
+    }
+    
+    private void initStudents() {
+        studentsBox.setItems(FXCollections.observableArrayList(serverConnection.getStudents()));
+    }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        serverConnection = ServerConnection.getInstance();
+        initLoggedInUser();
+        initStudents();
         addListenerForBox();
         setCellValueFactories();
-        spawnATest();
+        
     }
     
     public void spawnATest(){
