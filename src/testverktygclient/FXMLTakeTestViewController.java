@@ -65,13 +65,15 @@ public class FXMLTakeTestViewController implements Initializable {
     Timeline timeline;
 
     private static CompletedTest completedtest;
-    private static boolean timeOut = false;
+    private static boolean timeOut;
 
     public static boolean isTimeOut() {
         return timeOut;
     }
     int timeLeft;
     int[][] selectedoptions;
+    
+    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 
     public void finishTest(ActionEvent event) throws IOException {
         int score = 0;
@@ -129,9 +131,8 @@ public class FXMLTakeTestViewController implements Initializable {
         //below the test should be added to the student currently logged in, then it should load the previous
         //student view page
         //add code here
-        timeline.pause();
+        //timeline.pause();
         if (timeOut == false) {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Finish Test Confirmation");
             alert.setHeaderText("Note! You can not undo this!");
             alert.setContentText("Are you sure you want to finish the test ?");
@@ -149,11 +150,16 @@ public class FXMLTakeTestViewController implements Initializable {
             }
         }
         if (timeOut == true) {
-            Parent root = FXMLLoader.load(getClass().getResource("FXMLTestSummaryView.fxml"));
-            Scene s = new Scene(root);
-            Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stg.setScene(s);
+            alert.hide();
             timeline.stop();
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("FXMLTestSummaryView.fxml"));
+                Scene s = new Scene(root);
+                Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stg.setScene(s);
+            } catch (Exception e) {
+            }
+            
         }
     }
 
@@ -278,6 +284,7 @@ public class FXMLTakeTestViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        timeOut = false;
         serverconnection = ServerConnection.getInstance();
         question_text.setText(serverconnection.testToTake.getQuestions().get(0).getQuestion());
         question_number.setText("Question 1");
