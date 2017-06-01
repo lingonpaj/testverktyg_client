@@ -7,11 +7,11 @@ public class Question implements Serializable{
     private int id;
     private boolean multi;
     private String question;
-    private ArrayList<Option> options;
+    private ArrayList<Answer> options;
 
     public Question() {}
 
-    public Question(int id, String questionText, ArrayList<Option> options, boolean multi) {
+    public Question(int id, String questionText, ArrayList<Answer> options, boolean multi) {
         this.id = id;
         this.multi = multi;
         this.question = questionText;
@@ -44,11 +44,11 @@ public class Question implements Serializable{
         this.question = question;
     }
 
-    public ArrayList<Option> getOptions() {
+    public ArrayList<Answer> getOptions() {
         return options;
     }
 
-    public void setOptions(ArrayList<Option> options) {
+    public void setOptions(ArrayList<Answer> options) {
         this.options = options;
     }
 }
