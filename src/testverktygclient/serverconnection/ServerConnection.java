@@ -114,14 +114,14 @@ public class ServerConnection implements Serializable{
     }
     
     public CompletedTest getLastCompletedTest(){
-        Student student = new Student();
-        for (int i = 0; i < hardCodedUsers.size(); i++) {
-            if(loggedInUser.getId() == hardCodedUsers.get(i).getId()){
-                student = (Student) hardCodedUsers.get(i);
-                break;
-            }
-        }
-        return student.getCompletedTests().get(student.getCompletedTests().size()-1);
+        Client client = ClientBuilder.newClient();
+        Student loggedInStudent = client.target("http://localhost:8080/TestVerktygServer/webapi/students")
+                .path("" + loggedInUser.getId()).request(MediaType.APPLICATION_JSON).get(Student.class);
+        
+        //This to get the 
+        loggedInUser = loggedInStudent;
+        
+        return loggedInStudent.getCompletedTests().get(loggedInStudent.getCompletedTests().size()-1);
     }
     
     public void addCompletedTest(CompletedTest newTest, int studentId) {

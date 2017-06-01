@@ -59,6 +59,10 @@ public class CompletedTest implements Serializable{
     public void setTestMaxScore(int testMaxScore) {
         this.testMaxScore = testMaxScore;
     }
-    
+
+    @Override
+    public String toString() {
+        return "CompletedTest{" + "id=" + id + ", courseName=" + courseName + ", TestName=" + TestName + ", userScore=" + userScore + ", testMaxScore=" + testMaxScore + '}';
+    }
 }
 

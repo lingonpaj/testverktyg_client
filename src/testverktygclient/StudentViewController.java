@@ -111,7 +111,7 @@ public class StudentViewController implements Initializable {
         
         
         Student std = (Student) serverConnection.loggedInUser;
-        completedTestColumn.setCellValueFactory(new PropertyValueFactory<CompletedTest, String>("TestName"));
+        completedTestColumn.setCellValueFactory(new PropertyValueFactory("CompletedTest"));
         ObservableCompletedTestList = FXCollections.observableArrayList(std.getCompletedTests());
         completedTestTable.setItems(ObservableCompletedTestList);
         loggedInAsLabel.setText("Logged in as: " + serverConnection.loggedInUser.getFirstName()
