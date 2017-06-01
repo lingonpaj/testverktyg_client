@@ -8,19 +8,14 @@
 <AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygclient.FXMLTestSummaryViewController">
    <children>
       <AnchorPane prefHeight="80.0" prefWidth="1000.0" />
-      <Label fx:id="summaryLabel" alignment="CENTER" prefHeight="80.0" prefWidth="1000.0" style="-fx-background-color: DD4814;" text="Summary" textAlignment="CENTER" textFill="WHITE">
+      <Label fx:id="summaryLabel" alignment="CENTER" prefHeight="80.0" prefWidth="1000.0" style="-fx-background-color: DD4814;" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="46.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutY="620.0" prefHeight="80.0" prefWidth="1000.0" style="-fx-background-color: DD4814;" textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font size="46.0" />
-         </font>
-      </Label>
-      <AnchorPane layoutY="79.0" prefHeight="541.0" prefWidth="1000.0">
+      <AnchorPane layoutY="79.0" prefHeight="622.0" prefWidth="1000.0" style="-fx-background-color: white;">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="324.0" layoutY="141.0" prefHeight="53.0" prefWidth="352.0" text="Your score">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="413.0" layoutY="142.0" prefHeight="53.0" prefWidth="175.0" text="Your score">
                <font>
                   <Font size="36.0" />
                </font>
@@ -35,8 +30,16 @@
                   <Font size="36.0" />
                </font>
             </Label>
-            <Button layoutX="457.0" layoutY="462.0" mnemonicParsing="false" onAction="#finish" prefHeight="53.0" prefWidth="86.0" styleClass="orange-button" stylesheets="@style.css" text="Finish" />
+            <Button layoutX="446.0" layoutY="461.0" mnemonicParsing="false" onAction="#finish" prefHeight="27.0" prefWidth="109.0" styleClass="orange-button" stylesheets="@style.css" text="Finish">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Button>
          </children>
       </AnchorPane>
+      <Label layoutX="397.0" layoutY="-3.0" prefHeight="86.0" prefWidth="206.0" text="Summary" textFill="WHITE">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
