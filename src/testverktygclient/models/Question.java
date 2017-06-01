@@ -6,7 +6,7 @@ public class Question {
     private int id;
     private String question;
     private ArrayList<Option> options;
-
+    
     public Question() {}
 
     public Question(int id, String questionText, ArrayList<Option> options) {

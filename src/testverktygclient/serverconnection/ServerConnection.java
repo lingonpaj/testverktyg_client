@@ -43,7 +43,7 @@ public class ServerConnection {
         hardCodedQuestions.add(q1);
         hardCodedQuestions.add(q2);
         
-        Test premierLeagueTest = new Test(1, "Premier League Test", hardCodedQuestions);
+        Test premierLeagueTest = new Test(1, "Premier League Test", hardCodedQuestions, 1);
         
         ArrayList<Test> hardCodedTests = new ArrayList();
         hardCodedTests.add(premierLeagueTest);
@@ -51,6 +51,14 @@ public class ServerConnection {
         //Adding the course
         hardCodedCourses.add(new Course(1, "Basic Footall", hardCodedTests));
         
+    }
+
+    public ArrayList<User> getHardCodedUsers() {
+        return hardCodedUsers;
+    }
+
+    public ArrayList<Course> getHardCodedCourses() {
+        return hardCodedCourses;
     }
     
      public static ServerConnection getInstance(){

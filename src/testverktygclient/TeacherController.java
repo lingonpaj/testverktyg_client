@@ -5,17 +5,23 @@
  */
 package testverktygclient;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import testverktygclient.models.CompletedTest;
 import testverktygclient.models.Student;
 import testverktygclient.models.Test;
@@ -45,7 +51,10 @@ public class TeacherController implements Initializable {
     @FXML
     private ChoiceBox studentsBox;
     
+    @FXML
+    private Button createTestButton;
     
+    Parent root;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -105,8 +114,7 @@ public class TeacherController implements Initializable {
                     System.out.println(foundGuy.toString());
                     ArrayList<CompletedTest> completedTests = foundGuy.getCompletedTests();
                     
-                    System.out.println("This is compeltedTests: " + completedTests.toString());
-                    
+                    System.out.println("This is compeltedTests: " + completedTests.toString());                
                     ObservableList<CompletedTest> completedList = FXCollections.observableArrayList();
                     for(CompletedTest c : completedTests){
                         completedList.add(c);
@@ -114,10 +122,16 @@ public class TeacherController implements Initializable {
                     completedColumn.setItems(completedList);
                     completedColumn.refresh();
                     break;
-                }
-                    
+                }                
             }
         });
+    }
+    
+    @FXML
+    private void spawnNewWindow() throws IOException{
+        Stage ourStage = (Stage) createTestButton.getScene().getWindow();
+        root = FXMLLoader.load(getClass().getResource("CreateTestView.fxml"));
+        ourStage.setScene(new Scene(root));
     }
 }
     

@@ -21,6 +21,6 @@
           <TableColumn fx:id="maxScoreColumn" prefWidth="101.0" text="maxScore" />
         </columns>
       </TableView>
-      <Button layoutX="619.0" layoutY="174.0" mnemonicParsing="false" text="Create New Test" />
+      <Button fx:id="createTestButton" layoutX="619.0" layoutY="174.0" onAction="#spawnNewWindow" mnemonicParsing="false" text="Create New Test" />
    </children>
 </AnchorPane>

@@ -3,16 +3,17 @@ package testverktygclient.models;
 import java.util.ArrayList;
 
 public class Test {
-    private int id;
+    private int id, time;
     private String name;
     private ArrayList<Question> questions;
 
     public Test() {}
 
-    public Test(int id, String name, ArrayList<Question> questions) {
+    public Test(int id, String name, ArrayList<Question> questions, int time) {
         this.id = id;
         this.name = name;
         this.questions = questions;
+        this.time = time;
     }
 
     public int getId() {
@@ -37,5 +38,11 @@ public class Test {
 
     public void setQuestions(ArrayList<Question> questions) {
         this.questions = questions;
+    }
+    
+    @Override
+    public String toString(){
+        //int id, String name, ArrayList<Question> questions
+        return name;      
     }
 }

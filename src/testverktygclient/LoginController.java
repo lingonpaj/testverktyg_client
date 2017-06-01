@@ -3,6 +3,7 @@ package testverktygclient;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,6 +35,7 @@ public class LoginController implements Initializable {
     
     private ServerConnection serverConnection;
     
+    
     @FXML
     private void login(ActionEvent event) throws IOException {
         User user = serverConnection.loginAuthentication(userName.getText(), 
@@ -49,15 +51,11 @@ public class LoginController implements Initializable {
         //Temporary, will be replaced by loading of page depending of type of user
         errorLogin.setText(userToLogin.getClass().getSimpleName() + " authorized");
         
-        
         Stage ourStage = (Stage) loginButton.getScene().getWindow();
         
         root = FXMLLoader.load(getClass().getResource("" + userToLogin.getClass().getSimpleName() + "View.fxml"));
         ourStage.setScene(new Scene(root));
-        ourStage.setTitle("The " + userToLogin.getClass().getSimpleName() + " view!");
-        
-       
-        
+        ourStage.setTitle("The " + userToLogin.getClass().getSimpleName() + " view!"); 
     }
     
     @Override

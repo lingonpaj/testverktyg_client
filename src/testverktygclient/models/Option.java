@@ -36,4 +36,9 @@ public class Option {
     public void setCorrect(boolean correct) {
         this.correct = correct;
     }
+    
+    @Override
+    public String toString(){
+        return optionText;
+    }
 }
