@@ -98,16 +98,18 @@ public class ServerConnection implements Serializable{
 
     public User loginAuthentication(String userName, String password) {
         Client client = ClientBuilder.newClient();
-        User loggedInUser = client.target("http://localhost:8080/TestVerktygServer/webapi/users")
-                .path(userName).path(password).request(MediaType.APPLICATION_JSON).get(Teacher.class);
-        
-        if(loggedInUser == null) {
-            loggedInUser = client.target("http://localhost:8080/TestVerktygServer/webapi/users")
+        Student loggedInStudent = client.target("http://localhost:8080/TestVerktygServer/webapi/students")
                 .path(userName).path(password).request(MediaType.APPLICATION_JSON).get(Student.class);
-        }
-        client.close();
         
-        return loggedInUser;
+        if(loggedInStudent == null) {
+            Teacher loggedInTeacher = client.target("http://localhost:8080/TestVerktygServer/webapi/teachers")
+                .path(userName).path(password).request(MediaType.APPLICATION_JSON).get(Teacher.class);
+            client.close();
+            return loggedInTeacher;
+        }
+        
+        client.close();
+        return loggedInStudent;
     }
     
     public CompletedTest getLastCompletedTest(){
