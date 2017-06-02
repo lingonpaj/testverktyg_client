@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,6 +29,7 @@ public class LoginController implements Initializable {
     
     private ServerConnection serverConnection;
     
+    
     @FXML
     private void login(ActionEvent event) throws IOException {
         User user = serverConnection.loginAuthentication(userName.getText(), 
@@ -43,6 +45,7 @@ public class LoginController implements Initializable {
         serverConnection.loggedInUser = userToLogin;
         String loggedInUserType = checkUserType();
         
+
         try {
             Parent root;
             root = FXMLLoader.load(getClass().getResource(loggedInUserType + "View.fxml"));
@@ -56,7 +59,7 @@ public class LoginController implements Initializable {
     
     private String checkUserType() {
         return serverConnection.loggedInUser.getClass().getSimpleName();
-    }
+}
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

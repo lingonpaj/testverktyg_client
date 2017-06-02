@@ -29,13 +29,13 @@
           <TableColumn fx:id="maxScoreColumn" prefWidth="69.0" resizable="false" text="Max Score" />
         </columns>
       </TableView>
-      <Button layoutX="613.0" layoutY="174.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="109.0" styleClass="orange-button" stylesheets="@style.css" text="Create New Test">
+      <Button fx:id="createTestButton" layoutX="613.0" layoutY="174.0" mnemonicParsing="false" onAction="#spawnNewWindow" prefHeight="27.0" prefWidth="109.0" styleClass="orange-button" stylesheets="@style.css" text="Create New Test">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <AnchorPane prefHeight="80.0" prefWidth="1005.0" styleClass="headerfooter" stylesheets="@taketestview.css">
+      <AnchorPane prefHeight="80.0" prefWidth="1000.0" styleClass="headerfooter" stylesheets="@taketestview.css">
          <children>
-            <Label fx:id="loggedInAsLabel" layoutX="691.0" layoutY="19.0" prefHeight="42.0" prefWidth="251.0" textFill="WHITE">
+            <Label fx:id="loggedInAsLabel" layoutX="658.0" layoutY="14.0" prefHeight="42.0" prefWidth="251.0" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

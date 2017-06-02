@@ -7,15 +7,18 @@ public class Question implements Serializable{
     private int id;
     private boolean multi;
     private String question;
+
     private ArrayList<Answer> answers;
 
     public Question() {}
 
     public Question(int id, String questionText, ArrayList<Answer> answers, boolean multi) {
+
         this.id = id;
         this.multi = multi;
         this.question = questionText;
         this.answers = answers;
+        this.multi = multi;
     }
 
     public boolean isMulti() {

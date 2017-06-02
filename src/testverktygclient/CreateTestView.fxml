@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygclient.CreateTestViewController">
+   <children>
+      <TableView fx:id="CoursesTable" layoutX="300.0" layoutY="240.0" prefHeight="200.0" prefWidth="344.0">
+        <columns>
+          <TableColumn fx:id="CoursesColumn" prefWidth="343.0" text="Tests" />
+        </columns>
+      </TableView>
+      <Button fx:id="BackButton" layoutX="198.0" layoutY="474.0" mnemonicParsing="false" onAction="#back" text="Back" />
+      <Button fx:id="AddTestButton" layoutX="679.0" layoutY="350.0" mnemonicParsing="false" onAction="#spawnTestWindow" prefHeight="40.0" prefWidth="84.0" text="Create Test" />
+      <ChoiceBox fx:id="coursesBox" layoutX="425.0" layoutY="164.0" prefHeight="25.0" prefWidth="219.0" />
+      <Text layoutX="300.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Chosen:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <Button fx:id="DeleteTestButton" layoutX="679.0" layoutY="400.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="84.0" text="Delete Test" />
+      <AnchorPane prefHeight="80.0" prefWidth="1000.0" style="-fx-background-color: rgb(221, 72, 20);">
+         <children>
+            <Label fx:id="loggedInAsLabel" layoutX="658.0" layoutY="14.0" prefHeight="42.0" prefWidth="251.0" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Button layoutX="904.0" layoutY="24.0" mnemonicParsing="false" onAction="#signOut" style="-fx-background-color: rgb(221, 72, 20);" text="Sign out" textAlignment="CENTER" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <Label layoutX="8.0" layoutY="4.0" prefHeight="70.0" prefWidth="287.0" text="Newton Testing Tool 2017" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="errorMessage" layoutX="300.0" layoutY="467.0" prefHeight="40.0" prefWidth="344.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

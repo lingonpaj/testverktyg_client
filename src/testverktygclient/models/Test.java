@@ -3,7 +3,9 @@ package testverktygclient.models;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+
 public class Test implements Serializable{
+
     private int id, time;
     private String name;
     private ArrayList<Question> questions;
@@ -15,6 +17,7 @@ public class Test implements Serializable{
         this.time = time;
         this.name = name;
         this.questions = questions;
+        this.time = time;
     }
 
     public int getId() {
@@ -47,5 +50,11 @@ public class Test implements Serializable{
 
     public void setQuestions(ArrayList<Question> questions) {
         this.questions = questions;
+    }
+    
+    @Override
+    public String toString(){
+        //int id, String name, ArrayList<Question> questions
+        return name;      
     }
 }

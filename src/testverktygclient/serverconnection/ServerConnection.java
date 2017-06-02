@@ -45,7 +45,9 @@ public class ServerConnection implements Serializable{
         hardcodedOptions.add(new Answer(2, "Chelsea", false));
         hardcodedOptions.add(new Answer(2, "Spurs", false));
         
+
         Question q1 = new Question(1, "Which team doesn't suck?", hardcodedOptions, false);
+
         
         ArrayList<Answer> hardcodedOptions2 = new ArrayList();
         hardcodedOptions2.add(new Answer(1, "Emirates Stadium", false));
@@ -53,6 +55,7 @@ public class ServerConnection implements Serializable{
         hardcodedOptions2.add(new Answer(2, "White Hart Lane", false));
         
         Question q2 = new Question(2, "What is the name of Manchester Uniteds home arena?", hardcodedOptions2, false);
+
         
         ArrayList<Answer> hardcodedOptions3 = new ArrayList();
         hardcodedOptions3.add(new Answer(1, "Blue", false));
@@ -60,14 +63,16 @@ public class ServerConnection implements Serializable{
         hardcodedOptions3.add(new Answer(2, "Green", true));
         
         Question q3 = new Question(3, "Color of the sun yo?", hardcodedOptions3, true);
+
         
         ArrayList<Question> hardCodedQuestions = new ArrayList();
         hardCodedQuestions.add(q1);
         hardCodedQuestions.add(q2);
         hardCodedQuestions.add(q3);
         
-        
+
         Test premierLeagueTest = new Test(1, "Premier League Test", hardCodedQuestions, 5);
+
         
         ArrayList<Test> hardCodedTests = new ArrayList();
         hardCodedTests.add(premierLeagueTest);
@@ -87,8 +92,7 @@ public class ServerConnection implements Serializable{
     public ArrayList<Course> getHardCodedCourses() {
         return hardCodedCourses;
     }
-    
-    
+
     
      public static ServerConnection getInstance(){
         if(instance == null) {
@@ -129,6 +133,13 @@ public class ServerConnection implements Serializable{
         Client client = ClientBuilder.newClient();
         client.target("http://localhost:8080/TestVerktygServer/webapi/students").path("" + studentId).path("completedtests")
                 .request(MediaType.APPLICATION_JSON).post(Entity.json(newTest), CompletedTest.class);
+    }
+    
+    public void addTest(Test newTest, int courseId) {
+        System.out.println("ID JAG VILL SKICKA MED" + courseId);
+        Client client = ClientBuilder.newClient();
+        client.target("http://localhost:8080/TestVerktygServer/webapi/courses").path("" + courseId).path("tests")
+                .request(MediaType.APPLICATION_JSON).post(Entity.json(newTest), Test.class);
     }
     
     public List<Student> getStudents() {

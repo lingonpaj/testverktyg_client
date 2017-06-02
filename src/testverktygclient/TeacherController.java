@@ -18,6 +18,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -54,9 +57,12 @@ public class TeacherController implements Initializable {
     
     @FXML
     private ChoiceBox studentsBox;
-    
+
     private ServerConnection serverConnection;
-    
+
+    @FXML
+    private Button createTestButton;
+
     @FXML
     private void signOut(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
@@ -74,6 +80,8 @@ public class TeacherController implements Initializable {
     private void initStudents() {
         studentsBox.setItems(FXCollections.observableArrayList(serverConnection.getStudents()));
     }
+
+    Parent root;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -107,7 +115,8 @@ public class TeacherController implements Initializable {
                     System.out.println(foundGuy.toString());
                     ArrayList<CompletedTest> completedTests = foundGuy.getCompletedTests();
                     
-                    
+                    System.out.println("This is completedTests: " + completedTests.toString());                
+
                     ObservableList<CompletedTest> completedList = FXCollections.observableArrayList();
                     for(CompletedTest c : completedTests){
                         completedList.add(c);
@@ -115,10 +124,18 @@ public class TeacherController implements Initializable {
                     completedColumn.setItems(completedList);
                     completedColumn.refresh();
                     break;
-                }
-                    
+                }                
             }
         });
     }
+    
+    @FXML
+    private void spawnNewWindow() throws IOException{
+        Stage ourStage = (Stage) createTestButton.getScene().getWindow();
+        root = FXMLLoader.load(getClass().getResource("CreateTestView.fxml"));
+        ourStage.setScene(new Scene(root));
+    }
+    
+    
 }
     

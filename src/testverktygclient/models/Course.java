@@ -40,8 +40,10 @@ public class Course implements Serializable{
         this.tests = tests;
     }
 
+    
     @Override
-    public String toString() {
-        return "Course: " + name;
+    public String toString(){
+        return name;
     }
 }
+
