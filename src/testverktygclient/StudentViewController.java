@@ -61,11 +61,7 @@ public class StudentViewController implements Initializable {
     
     @FXML
     private TableColumn<CompletedTest, Integer> completedTestMaxColumn;
-    
-    //fx:id="completedCourseNameColumn" prefWidth="131.0" text="Course Name" />
-    //<TableColumn fx:id="completedTestNameColumn" prefWidth="152.0" text="Test Name" />
-    //<TableColumn fx:id="completedTestPointsColumn" prefWidth="54.0" text="Points" />
-    //<TableColumn fx:id="completedTestMaxColumn"
+
     
     @FXML
     private ChoiceBox chooseCourseDropDown;
@@ -93,7 +89,16 @@ public class StudentViewController implements Initializable {
         availableTestColumn.setCellValueFactory(new PropertyValueFactory<Test, String>("name"));
         ObservableCourseList = FXCollections.observableArrayList(serverConnection.getCourses());
         chooseCourseDropDown.setItems(ObservableCourseList);
-
+        
+        Student loggedinstudent = (Student) serverConnection.loggedInUser;
+        
+        ObservableCompletedTestList = FXCollections.observableArrayList(loggedinstudent.getCompletedTests());
+        completedTestTable.setItems(ObservableCompletedTestList);
+        
+        completedTestTable.setColumnResizePolicy((param) -> false);
+        
+        System.out.println(loggedinstudent.getCompletedTests().size());
+        
         chooseCourseDropDown.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
 
         @Override
