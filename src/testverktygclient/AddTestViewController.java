@@ -60,8 +60,8 @@ public class AddTestViewController implements Initializable {
     
     @FXML
     private TextField minutesBox, secondsBox, TestNameField;
-    
-    public static ArrayList<QuestionOptions> toReturn;
+    public static ObservableList<QuestionOptions> toReturn;
+
     
     @FXML
     private Label loggedInAsLabel, chosenCourseText;
@@ -75,7 +75,8 @@ public class AddTestViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        toReturn = new ArrayList<QuestionOptions>();
+        toReturn = FXCollections.observableArrayList();
+        questionsTable.setItems(toReturn);
         serverConnection = ServerConnection.getInstance();
         setCellValueFactories();
         setText();
@@ -156,31 +157,7 @@ public class AddTestViewController implements Initializable {
         CorrectQuestionColumn.setCellValueFactory(new PropertyValueFactory<QuestionOptions, String>("correct"));
     }
     
-    public void updateList(ArrayList<QuestionOptions> input){
-        ObservableList<QuestionOptions> questionList2 = FXCollections.observableArrayList(input);
-        
-//        ArrayList<QuestionOptions> oldList = new ArrayList<QuestionOptions>();
-//        
-//        for(Object c :questionsTable.getItems()){
-//            QuestionOptions o = (QuestionOptions) c;
-//            oldList.add(o);
-//        }
-//        
-//        for(QuestionOptions q : input){
-//            System.out.println("This is how many we have in input: ");
-//            oldList.add(q);
-//        }
-//        
-//        for(QuestionOptions q : oldList){
-//            questionList2.add(q);
-//        }
-        
-        
-        
-        questionsTable.setItems(questionList2);
-        
-     //   questionsTable.refresh();
-    }
+
     
     @FXML
     private void addTest(){
@@ -282,7 +259,6 @@ public class AddTestViewController implements Initializable {
         catch(Exception e){
             System.out.println("Got a empty list to operate on!");
         }
-        updateList(toReturn);
         
         
     }

@@ -56,7 +56,7 @@ public class AddQuestionViewController implements Initializable {
     
     @FXML
     private void enableOrDisableCheckboxes1(){
-        if(option1Field.getText().isEmpty()){
+        if(option1Field.getText().trim().isEmpty()){
             option1Correct.setDisable(true);
         }else{
             option1Correct.setDisable(false);
@@ -65,7 +65,7 @@ public class AddQuestionViewController implements Initializable {
     
     @FXML
     private void enableOrDisableCheckboxes2(){
-        if(option2Field.getText().isEmpty()){
+        if(option2Field.getText().trim().isEmpty()){
             option2Correct.setDisable(true);
         }else{
             option2Correct.setDisable(false);
@@ -74,7 +74,7 @@ public class AddQuestionViewController implements Initializable {
     
     @FXML
     private void enableOrDisableCheckboxes3(){
-        if(option3Field.getText().isEmpty()){
+        if(option3Field.getText().trim().isEmpty()){
             option3Correct.setDisable(true);
         }else{
             option3Correct.setDisable(false);
@@ -83,7 +83,7 @@ public class AddQuestionViewController implements Initializable {
     
     @FXML
     private void enableOrDisableCheckboxes4(){
-        if(option4Field.getText().isEmpty()){
+        if(option4Field.getText().trim().isEmpty()){
             option4Correct.setDisable(true);
         }else{
             option4Correct.setDisable(false);
