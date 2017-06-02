@@ -5,12 +5,17 @@ import java.math.MathContext;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import testverktygclient.models.CompletedTest;
+import testverktygclient.models.Course;
 import testverktygclient.models.Student;
+import testverktygclient.models.Test;
 import testverktygclient.serverconnection.ServerConnection;
 
 public class StatisticsViewController implements Initializable {
@@ -28,6 +33,8 @@ public class StatisticsViewController implements Initializable {
     private Label averageScoreLabel;
     @FXML
     private Label numberOFStudentsLabel;
+    @FXML
+    private ChoiceBox<String> testBox;
     
     @FXML
     private void signOut(ActionEvent event) {
@@ -113,10 +120,27 @@ public class StatisticsViewController implements Initializable {
         return roundedAmount;
     }
     
+    private void initTestBox() {
+        //ArrayList<String> testNames = getNamesOfAllTests();
+        testBox.setItems(FXCollections.observableArrayList(getNamesOfAllTests()));
+    }
+    
+    private ArrayList<String> getNamesOfAllTests() {
+        ArrayList<String> namesOfAllTests = new ArrayList();
+        ArrayList<Course> allCourses = (ArrayList) serverConnection.getCourses();
+        for(Course course : allCourses) {
+            for(Test test : course.getTests()) {
+                namesOfAllTests.add(test.getName());
+            }
+        }
+        return namesOfAllTests;
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         serverConnection = ServerConnection.getInstance();
         allStudents = (ArrayList) serverConnection.getStudents();
+        initTestBox();
         System.out.println(getNumberOfTimesTestHasBeenMade("The animal test"));
         System.out.println(getPercentageOfStudentsWhoCompletedTest("The animal test"));
         System.out.println(getHighestScorerOnATest("The animal test"));
