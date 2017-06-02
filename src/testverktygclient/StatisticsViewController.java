@@ -5,6 +5,8 @@ import java.math.MathContext;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.event.ActionEvent;
@@ -12,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import static testverktygclient.StudentViewController.ObservableTestList;
 import testverktygclient.models.CompletedTest;
 import testverktygclient.models.Course;
 import testverktygclient.models.Student;
@@ -32,7 +35,7 @@ public class StatisticsViewController implements Initializable {
     @FXML
     private Label averageScoreLabel;
     @FXML
-    private Label numberOFStudentsLabel;
+    private Label numberOfTimesLabel;
     @FXML
     private ChoiceBox<String> testBox;
     
@@ -89,11 +92,14 @@ public class StatisticsViewController implements Initializable {
         int highestScoreOnATest = 0;
         for(Student student : allStudents) {
             for(CompletedTest compTest : student.getCompletedTests()) {
-                if(compTest.getUserScore() > highestScoreOnATest) {
+                if(compTest.getUserScore() > highestScoreOnATest && compTest.getTestName().equals(testName)) {
                     highestScoreOnATest = compTest.getUserScore();
                     highestScorerOnATest = student.getFirstName() + " " + student.getLastName();
                 }
             }
+        }
+        if(highestScoreOnATest == 0) {
+            return "-";
         }
         return highestScoreOnATest + " (" + highestScorerOnATest + ")";
     }
@@ -114,15 +120,24 @@ public class StatisticsViewController implements Initializable {
     }
     
     private double roundAmount(double amount) {
-        BigDecimal bd = new BigDecimal(amount);
-        bd = bd.round(new MathContext(2));
-        double roundedAmount = bd.doubleValue();
-        return roundedAmount;
+        try {
+            BigDecimal bd = new BigDecimal(amount);
+            bd = bd.round(new MathContext(2));
+            double roundedAmount = bd.doubleValue();
+            return roundedAmount;
+        } catch (Exception e) {
+            return 0;
+        }
     }
     
     private void initTestBox() {
-        //ArrayList<String> testNames = getNamesOfAllTests();
         testBox.setItems(FXCollections.observableArrayList(getNamesOfAllTests()));
+        testBox.valueProperty().addListener(new ChangeListener<String>() {
+            @Override 
+            public void changed(ObservableValue ov, String t, String t1) {
+                updateStatistics(t1);
+            }    
+        });
     }
     
     private ArrayList<String> getNamesOfAllTests() {
@@ -134,6 +149,15 @@ public class StatisticsViewController implements Initializable {
             }
         }
         return namesOfAllTests;
+    }
+    
+    private void updateStatistics(String testName) {
+        System.out.println(testName);
+        percentageLabel.setText(getPercentageOfStudentsWhoCompletedTest(testName) + "%");
+        studentBestScoreLabel.setText(getHighestScorerOnATest(testName));
+        averageScoreLabel.setText(getAverageScoreOfATest(testName) + " points");
+        numberOfTimesLabel.setText("" + getNumberOfTimesTestHasBeenMade(testName));
+        
     }
     
     @Override

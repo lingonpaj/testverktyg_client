@@ -26,7 +26,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Label layoutX="8.0" layoutY="4.0" prefHeight="70.0" prefWidth="287.0" text="Newton Testing Tool 2017" textFill="WHITE">
+            <Label layoutX="8.0" layoutY="4.0" prefHeight="70.0" prefWidth="287.0" text="Statistics" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
@@ -34,63 +34,42 @@
          </children>
       </AnchorPane>
       <ChoiceBox fx:id="testBox" layoutX="135.0" layoutY="225.0" prefHeight="25.0" prefWidth="315.0" />
-      <VBox layoutX="135.0" layoutY="289.0" prefHeight="270.0" prefWidth="233.0">
+      <VBox layoutX="135.0" layoutY="267.0" prefHeight="292.0" prefWidth="315.0">
          <children>
-            <Label prefHeight="55.0" prefWidth="315.0" text="Percentage of students taking test:">
-               <VBox.margin>
-                  <Insets bottom="5.0" />
-               </VBox.margin>
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label prefHeight="55.0" prefWidth="315.0" text="Student with best score:">
-               <VBox.margin>
-                  <Insets bottom="5.0" />
-               </VBox.margin>
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label prefHeight="55.0" prefWidth="315.0" text="Average score:">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label prefHeight="55.0" prefWidth="315.0" text="Number of students taking test:">
+            <Label prefHeight="55.0" prefWidth="315.0" styleClass="statistics-text" stylesheets="@style.css" text="Number of times test has been taken:">
                <font>
                   <Font size="14.0" />
                </font>
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
+            </Label>
+            <Label prefHeight="55.0" prefWidth="315.0" styleClass="statistics-text" stylesheets="@style.css" text="Percentage of students taking test:">
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label prefHeight="55.0" prefWidth="315.0" styleClass="statistics-text" stylesheets="@style.css" text="Best score:">
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label prefHeight="55.0" prefWidth="315.0" styleClass="statistics-text" stylesheets="@style.css" text="Average score:">
+               <font>
+                  <Font size="14.0" />
+               </font>
             </Label>
          </children>
       </VBox>
-      <VBox layoutX="366.0" layoutY="289.0" prefHeight="270.0" prefWidth="163.0">
+      <VBox layoutX="450.0" layoutY="267.0" prefHeight="292.0" prefWidth="163.0">
          <children>
-            <Label fx:id="percentageLabel" prefHeight="55.0" prefWidth="315.0" text="0">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="5.0" />
-               </VBox.margin>
-            </Label>
-            <Label fx:id="studentBestScoreLabel" prefHeight="55.0" prefWidth="315.0" text="Name. Score: 0">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="5.0" />
-               </VBox.margin>
-            </Label>
-            <Label fx:id="averageScoreLabel" prefHeight="55.0" prefWidth="315.0" text="0">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="numberOFStudentsLabel" prefHeight="55.0" prefWidth="315.0" text="0">
+            <Label fx:id="numberOfTimesLabel" prefHeight="55.0" prefWidth="315.0" styleClass="statistics-text" stylesheets="@style.css">
                <font>
                   <Font size="14.0" />
                </font>
@@ -98,14 +77,38 @@
                   <Insets top="5.0" />
                </VBox.margin>
             </Label>
+            <Label fx:id="percentageLabel" prefHeight="55.0" prefWidth="315.0" styleClass="statistics-text" stylesheets="@style.css">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="studentBestScoreLabel" prefHeight="55.0" prefWidth="315.0" styleClass="statistics-text" stylesheets="@style.css">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="averageScoreLabel" prefHeight="55.0" prefWidth="315.0" styleClass="statistics-text" stylesheets="@style.css">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
          </children>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
       </VBox>
       <Label layoutX="134.0" layoutY="168.0" prefHeight="35.0" prefWidth="413.0" text="Chose a test below to see statistics.">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Button layoutX="775.0" layoutY="559.0" mnemonicParsing="false" onAction="#backToTeacherView" prefHeight="27.0" prefWidth="109.0" styleClass="orange-button" stylesheets="@style.css" text="Back">
+      <Button layoutX="778.0" layoutY="575.0" mnemonicParsing="false" onAction="#backToTeacherView" prefHeight="27.0" prefWidth="109.0" styleClass="orange-button" stylesheets="@style.css" text="Back">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
