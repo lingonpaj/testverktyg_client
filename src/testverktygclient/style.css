@@ -34,3 +34,7 @@
     -fx-background-color: #999999;
     -fx-focus-color: DD4814;
 }
+
+.statistics-text {
+    -fx-font-size: 18px;
+}
