@@ -136,6 +136,14 @@ public class TeacherController implements Initializable {
         ourStage.setScene(new Scene(root));
     }
     
+    @FXML
+    private void spawnStatistics(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("StatisticsView.fxml"));
+        Scene s = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow(); // Hämta knappen, hämta stagen
+        stage.setScene(s); // byter ut gamla stage mot nya, sätt en ny stage
+        stage.show();
+    }
     
 }
     
