@@ -1,5 +1,6 @@
 package testverktygclient;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.net.URL;
@@ -11,9 +12,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 import static testverktygclient.StudentViewController.ObservableTestList;
 import testverktygclient.models.CompletedTest;
 import testverktygclient.models.Course;
@@ -40,11 +46,21 @@ public class StatisticsViewController implements Initializable {
     private ChoiceBox<String> testBox;
     
     @FXML
-    private void signOut(ActionEvent event) {
+    private void signOut(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        Scene s = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow(); // Hämta knappen, hämta stagen
+        stage.setScene(s); // byter ut gamla stage mot nya, sätt en ny stage
+        stage.show();
     }
 
     @FXML
-    private void backToTeacherView(ActionEvent event) {
+    private void backToTeacherView(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("TeacherView.fxml"));
+        Scene s = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow(); // Hämta knappen, hämta stagen
+        stage.setScene(s); // byter ut gamla stage mot nya, sätt en ny stage
+        stage.show();
     }
     
     private int getNumberOfTimesTestHasBeenMade(String testName) {
