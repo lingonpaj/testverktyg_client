@@ -9,11 +9,13 @@ import testverktygclient.models.QuestionOptions;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.InputEvent;
 import javafx.scene.text.Text;
@@ -46,8 +48,48 @@ public class AddQuestionViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        option1Correct.setDisable(true);
+        option2Correct.setDisable(true);
+        option3Correct.setDisable(true);
+        option4Correct.setDisable(true);
     }
-
+    
+    @FXML
+    private void enableOrDisableCheckboxes1(){
+        if(option1Field.getText().isEmpty()){
+            option1Correct.setDisable(true);
+        }else{
+            option1Correct.setDisable(false);
+        }
+    }
+    
+    @FXML
+    private void enableOrDisableCheckboxes2(){
+        if(option2Field.getText().isEmpty()){
+            option2Correct.setDisable(true);
+        }else{
+            option2Correct.setDisable(false);
+        }
+    }
+    
+    @FXML
+    private void enableOrDisableCheckboxes3(){
+        if(option3Field.getText().isEmpty()){
+            option3Correct.setDisable(true);
+        }else{
+            option3Correct.setDisable(false);
+        }
+    }
+    
+    @FXML
+    private void enableOrDisableCheckboxes4(){
+        if(option4Field.getText().isEmpty()){
+            option4Correct.setDisable(true);
+        }else{
+            option4Correct.setDisable(false);
+        }
+    }
+    
     @FXML
     private void addQuestion(){
         ArrayList<QuestionOptions> question = new ArrayList<QuestionOptions>();
@@ -78,12 +120,12 @@ public class AddQuestionViewController implements Initializable {
         boolean firstPass = true;
         
         if(amountofRight < 1){
-            errorText.setText("At least one option must be right.");
+            errorText.setText("ou must pick one option.");
             firstPass = false;
         }
         
         if(amountofRight != 1 && !multi){
-            errorText.setText("You must pick one option.");
+            errorText.setText("At least one option must be right.");
             firstPass = false;
         }
         
@@ -93,7 +135,7 @@ public class AddQuestionViewController implements Initializable {
         }
         
         if(QuestionNameField.getText().length() < 1){
-            errorText.setText("A question must have a Question!");
+            errorText.setText("A question must have a question text!");
             firstPass = false;
         }
         

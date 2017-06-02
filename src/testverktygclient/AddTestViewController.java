@@ -203,16 +203,28 @@ public class AddTestViewController implements Initializable {
                 
                 ArrayList<Question> toFill = new ArrayList<Question>();
                 
-                ArrayList<Answer> optionsTouse = new ArrayList<Answer>();
+                
+                System.out.println("size of return: " + toReturn.size());
                 for(QuestionOptions q : toReturn){
+                    ArrayList<Answer> optionsTouse = new ArrayList<Answer>();
                     String name = q.getQuestion();
-                    optionsTouse.add(q.getOption1());
-                    optionsTouse.add(q.getOption2());
-                    optionsTouse.add(q.getOption3());
-                    optionsTouse.add(q.getOption4());
+
+                    if(q.getOption1().getOptionText().length() > 0){
+                        optionsTouse.add(q.getOption1());
+                    }
+                    if(q.getOption2().getOptionText().length() > 0){
+                        optionsTouse.add(q.getOption2());
+                    }
+                    if(q.getOption3().getOptionText().length() > 0){
+                        optionsTouse.add(q.getOption3());
+                    }
+                    if(q.getOption4().getOptionText().length() > 0){
+                        optionsTouse.add(q.getOption4());
+                    }
+
                     
                     boolean multi = q.getMulti();
-                    
+                    System.out.println("Size now please?" + optionsTouse.size());
                     Question toAdd = new Question(1,name, optionsTouse, multi);
                     toFill.add(toAdd);
                 }
