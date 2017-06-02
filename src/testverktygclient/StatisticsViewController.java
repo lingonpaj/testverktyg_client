@@ -1,27 +1,103 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package testverktygclient;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
+import testverktygclient.models.CompletedTest;
+import testverktygclient.models.Student;
+import testverktygclient.serverconnection.ServerConnection;
 
-/**
- * FXML Controller class
- *
- * @author Christoffer
- */
 public class StatisticsViewController implements Initializable {
-
-    /**
-     * Initializes the controller class.
-     */
+    
+    private ServerConnection serverConnection;
+    ArrayList<Student> allStudents;
+    
+    private int getNumberOfTimesTestHasBeenMade(String testName) {
+        int numberOfTimesTestHasBeenMade = 0;
+        ArrayList<CompletedTest> allCompletedTests = getCompletedTests();
+        for(CompletedTest compTest : allCompletedTests) {
+            if(compTest.getTestName().equals(testName)) {
+                numberOfTimesTestHasBeenMade++;
+            }
+        }
+        return numberOfTimesTestHasBeenMade;
+    }
+    
+    private ArrayList<CompletedTest> getCompletedTests() {
+        ArrayList<CompletedTest> allCompletedTests = new ArrayList();
+        for(Student student : allStudents) {
+            for(CompletedTest compTest : student.getCompletedTests()) {
+                allCompletedTests.add(compTest);
+            }
+        }
+        return allCompletedTests;
+    }
+    
+    private double getPercentageOfStudentsWhoCompletedTest(String testName) {
+        double percentageOfStudentsWhoCompletedTest;
+        double numOfStudents = allStudents.size();
+        double numOfStudentsWhoTookTest = 0;
+        
+        for(Student student : allStudents) {
+            for(CompletedTest completedTest : student.getCompletedTests()) {
+                if(completedTest.getTestName().equals(testName)) {
+                    numOfStudentsWhoTookTest++;
+                    break;
+                }
+            }
+        }
+        
+        percentageOfStudentsWhoCompletedTest = numOfStudentsWhoTookTest / numOfStudents * 100;
+        
+        return percentageOfStudentsWhoCompletedTest;
+    }
+    
+    private String getHighestScorerOnATest(String testName) {
+        String highestScorerOnATest = "";
+        int highestScoreOnATest = 0;
+        for(Student student : allStudents) {
+            for(CompletedTest compTest : student.getCompletedTests()) {
+                if(compTest.getUserScore() > highestScoreOnATest) {
+                    highestScoreOnATest = compTest.getUserScore();
+                    highestScorerOnATest = student.getFirstName() + " " + student.getLastName();
+                }
+            }
+        }
+        return highestScoreOnATest + " (" + highestScorerOnATest + ")";
+    }
+    
+    private double getAverageScoreOfATest(String testName) {
+        double sumOfAllPointsOnTest = 0;
+        double numberOfCompletedTests = 0;
+        
+        ArrayList<CompletedTest> allCompletedTests = getCompletedTests();
+        for(CompletedTest compTest : allCompletedTests) {
+            if(compTest.getTestName().equals(testName)) {
+                numberOfCompletedTests++;
+                sumOfAllPointsOnTest += compTest.getUserScore();
+            }
+        }
+        
+        return roundAmount(sumOfAllPointsOnTest / numberOfCompletedTests);
+    }
+    
+    private double roundAmount(double amount) {
+        BigDecimal bd = new BigDecimal(amount);
+        bd = bd.round(new MathContext(2));
+        double roundedAmount = bd.doubleValue();
+        return roundedAmount;
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        serverConnection = ServerConnection.getInstance();
+        allStudents = (ArrayList) serverConnection.getStudents();
+        System.out.println(getNumberOfTimesTestHasBeenMade("The animal test"));
+        System.out.println(getPercentageOfStudentsWhoCompletedTest("The animal test"));
+        System.out.println(getHighestScorerOnATest("The animal test"));
+        System.out.println(getAverageScoreOfATest("The animal test"));
     }    
-    
 }
