@@ -51,8 +51,6 @@ public class CreateTestViewController implements Initializable {
     @FXML
     private Button AddTestButton;
     
-    @FXML
-    private Button EditTestButton;
     
     @FXML
     private ChoiceBox coursesBox;
@@ -68,6 +66,8 @@ public class CreateTestViewController implements Initializable {
     
     @FXML
     private TableColumn CoursesColumn;
+    @FXML
+    private Button DeleteTestButton;
     /**
      * Initializes the controller class.
      */
@@ -147,6 +147,15 @@ public class CreateTestViewController implements Initializable {
         }
         else{
             errorMessage.setText("You must select a course before adding a test.");
+        }
+    }
+
+    @FXML
+    private void deleteTest(ActionEvent event) {
+        Test selectedTest = (Test) CoursesTable.getSelectionModel().getSelectedItem();
+        if(selectedTest != null) {
+            serverConnection.deleteTest(selectedTest.getId());
+            CoursesTable.getItems().remove(selectedTest);
         }
     }
 }

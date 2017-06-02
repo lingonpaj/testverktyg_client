@@ -157,4 +157,11 @@ public class ServerConnection implements Serializable{
                 .request(MediaType.APPLICATION_JSON).get(new GenericType<ArrayList<Course>>(){});
         return courses;
     }
+    
+    public void deleteTest(int testId) {
+        Client client = ClientBuilder.newClient();
+        client.target("http://localhost:8080/TestVerktygServer/webapi/courses/1/tests/")
+                .path("" + testId).request(MediaType.APPLICATION_JSON)
+                    .delete();
+    }
 }
