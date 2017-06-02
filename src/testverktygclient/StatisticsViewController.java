@@ -5,7 +5,10 @@ import java.math.MathContext;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import testverktygclient.models.CompletedTest;
 import testverktygclient.models.Student;
 import testverktygclient.serverconnection.ServerConnection;
@@ -14,6 +17,25 @@ public class StatisticsViewController implements Initializable {
     
     private ServerConnection serverConnection;
     ArrayList<Student> allStudents;
+    
+    @FXML
+    private Label loggedInAsLabel;
+    @FXML
+    private Label percentageLabel;
+    @FXML
+    private Label studentBestScoreLabel;
+    @FXML
+    private Label averageScoreLabel;
+    @FXML
+    private Label numberOFStudentsLabel;
+    
+    @FXML
+    private void signOut(ActionEvent event) {
+    }
+
+    @FXML
+    private void backToTeacherView(ActionEvent event) {
+    }
     
     private int getNumberOfTimesTestHasBeenMade(String testName) {
         int numberOfTimesTestHasBeenMade = 0;
