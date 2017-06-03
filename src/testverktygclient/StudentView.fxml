@@ -33,7 +33,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <Label layoutX="291.0" layoutY="115.0" prefHeight="53.0" prefWidth="328.0" text="Choose test - Student view&#10;">
+      <Label layoutX="291.0" layoutY="115.0" prefHeight="53.0" prefWidth="328.0" text="Choose test&#10;">
          <font>
             <Font size="24.0" />
          </font>
