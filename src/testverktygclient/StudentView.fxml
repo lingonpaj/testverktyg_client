@@ -78,5 +78,10 @@
          </cursor>
       </Button>
       <Label fx:id="chooseTest" layoutX="576.0" layoutY="412.0" prefHeight="17.0" prefWidth="143.0" styleClass="chooseTest" text="Please choose a test" />
+      <Label layoutX="8.0" layoutY="4.0" prefHeight="70.0" prefWidth="287.0" text="Newton Testing Tool 2017" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

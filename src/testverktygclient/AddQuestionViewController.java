@@ -115,22 +115,19 @@ public class AddQuestionViewController implements Initializable {
             }
         }
         
-        System.out.println("Amount of right is: " + amountofRight);
+        if(multi){
+            amountofRight--;
+        }
         
         boolean firstPass = true;
         
         if(amountofRight < 1){
-            errorText.setText("ou must pick one option.");
+            errorText.setText("You must pick at least one option to be correct.");
             firstPass = false;
         }
         
-        if(amountofRight != 1 && !multi){
-            errorText.setText("At least one option must be right.");
-            firstPass = false;
-        }
-        
-        if(multi && amountofRight < 2){
-            errorText.setText("You must have several options for Multi");
+        if(amountofRight > 1 && !multi){
+            errorText.setText("Only one answer can be correct for non multi.");
             firstPass = false;
         }
         

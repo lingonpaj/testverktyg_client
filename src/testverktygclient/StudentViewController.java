@@ -95,7 +95,11 @@ public class StudentViewController implements Initializable {
         ObservableCompletedTestList = FXCollections.observableArrayList(loggedinstudent.getCompletedTests());
         completedTestTable.setItems(ObservableCompletedTestList);
         
+        availableTestTable.setColumnResizePolicy((param) -> false);
         completedTestTable.setColumnResizePolicy((param) -> false);
+        
+        loggedInAsLabel.setText("Logged in as: " + serverConnection.loggedInUser.getFirstName()
+                + " " + serverConnection.loggedInUser.getLastName());
         
         System.out.println(loggedinstudent.getCompletedTests().size());
         

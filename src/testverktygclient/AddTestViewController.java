@@ -75,6 +75,7 @@ public class AddTestViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        questionsTable.setColumnResizePolicy((param) -> false);
         toReturn = FXCollections.observableArrayList();
         questionsTable.setItems(toReturn);
         serverConnection = ServerConnection.getInstance();

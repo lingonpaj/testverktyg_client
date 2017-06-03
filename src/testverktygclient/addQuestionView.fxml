@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="480.0" prefWidth="611.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygclient.AddQuestionViewController">
+<AnchorPane id="AnchorPane" prefHeight="480.0" prefWidth="611.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygclient.AddQuestionViewController">
    <children>
       <TextField fx:id="QuestionNameField" layoutX="225.0" layoutY="134.0" />
       <TextField fx:id="option1Field" layoutX="225.0" layoutY="192.0" onKeyReleased="#enableOrDisableCheckboxes1" />
@@ -27,7 +27,10 @@
       <CheckBox fx:id="option2Correct" layoutX="385.0" layoutY="254.0" mnemonicParsing="false" text="Correct" />
       <CheckBox fx:id="option3Correct" layoutX="385.0" layoutY="312.0" mnemonicParsing="false" text="Correct" />
       <CheckBox fx:id="option4Correct" layoutX="385.0" layoutY="372.0" mnemonicParsing="false" text="Correct" />
-      <Button fx:id="finishButton" layoutX="261.0" layoutY="409.0" mnemonicParsing="false" onAction="#addQuestion" prefHeight="40.0" prefWidth="82.0" text="Finish" />
+      <Button fx:id="finishButton" layoutX="261.0" layoutY="409.0" mnemonicParsing="false" onAction="#addQuestion" prefHeight="40.0" prefWidth="82.0" styleClass="orange-button" stylesheets="@style.css" text="Finish">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
       <CheckBox fx:id="MultiCorrect" layoutX="385.0" layoutY="138.0" mnemonicParsing="false" text="Multi-Correct" />
       <Text fx:id="errorText" layoutX="362.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="183.0">
          <font>
