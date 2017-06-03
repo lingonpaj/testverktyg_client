@@ -181,9 +181,7 @@ public class StatisticsViewController implements Initializable {
         serverConnection = ServerConnection.getInstance();
         allStudents = (ArrayList) serverConnection.getStudents();
         initTestBox();
-        System.out.println(getNumberOfTimesTestHasBeenMade("The animal test"));
-        System.out.println(getPercentageOfStudentsWhoCompletedTest("The animal test"));
-        System.out.println(getHighestScorerOnATest("The animal test"));
-        System.out.println(getAverageScoreOfATest("The animal test"));
+        loggedInAsLabel.setText("Logged in as: " + serverConnection.loggedInUser.getFirstName()
+                + " " + serverConnection.loggedInUser.getLastName());
     }    
 }

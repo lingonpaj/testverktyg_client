@@ -29,12 +29,12 @@
                   <Font size="50.0" />
                </font>
             </Label>
-            <Button fx:id="finishbutton" layoutX="479.0" layoutY="523.0" mnemonicParsing="false" onAction="#finishTest" prefHeight="27.0" prefWidth="109.0" styleClass="finishbutton" stylesheets="@taketestview.css" text="Finish">
+            <Button fx:id="finishbutton" layoutX="479.0" layoutY="523.0" mnemonicParsing="false" onAction="#finishTest" prefHeight="40.0" prefWidth="113.0" styleClass="finishbutton" stylesheets="@taketestview.css" text="Finish">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
                <font>
-                  <Font name="System Bold" size="13.0" />
+                  <Font name="System Bold" size="12.0" />
                </font></Button>
             <Label fx:id="timerLabel" layoutX="432.0" layoutY="37.0" prefHeight="57.0" prefWidth="213.0">
                <font>

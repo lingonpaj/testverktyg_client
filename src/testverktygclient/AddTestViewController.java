@@ -158,6 +158,14 @@ public class AddTestViewController implements Initializable {
         CorrectQuestionColumn.setCellValueFactory(new PropertyValueFactory<QuestionOptions, String>("correct"));
     }
     
+    @FXML
+    private void deleteQuestion(){
+        QuestionOptions selectedQuestion = (QuestionOptions) questionsTable.getSelectionModel().getSelectedItem();
+        if(selectedQuestion != null){
+            toReturn.remove(selectedQuestion);
+        }
+    }
+    
 
     
     @FXML
@@ -165,14 +173,17 @@ public class AddTestViewController implements Initializable {
         System.out.println("Gettime returns: " + getTime());
         int time = getTime();
         if(time < 0){
-            errorText.setText("The time must be positive, and both windows filled!");
+            errorText.setText("Please enter a valid time limit.");
             //int id, String name, ArrayList<Question> questions, int time
             
         }
         else{
             System.out.println("We found the time of: " + getTime());
             if(TestNameField.getText().length() < 1){
-                errorText.setText("Cannot make a test with a empty name.");
+                errorText.setText("Cannot make a test with an empty name.");
+            }
+            else if(toReturn.size() < 1){
+                errorText.setText("Cannot make a test without questions.");
             }
             else{
                 
