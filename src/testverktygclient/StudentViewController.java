@@ -70,7 +70,7 @@ public class StudentViewController implements Initializable {
     private TableView<Test> availableTestTable;
     
     private Course selectedCourse;
-    public static Test selectedTest;
+    public Test selectedTest;
 
     public static List<Course> courseArrayList = new ArrayList<>();
     public static List<CompletedTest> completedTestArrayList = new ArrayList<>();
@@ -164,7 +164,7 @@ public class StudentViewController implements Initializable {
     private void startTest(ActionEvent event) throws IOException   {
         
             if(selectedTest == null){
-                chooseTest.setStyle("-fx-text-fill: DD4814");
+                chooseTest.setText("Please choose a test.");
             } else {
                 serverConnection.testToTake = selectedTest;
                 serverConnection.courseNameOfTest = selectedCourse.getName();

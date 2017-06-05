@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
@@ -15,39 +10,39 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygclient.CreateTestViewController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygclient.CreateTestViewController">
    <children>
-      <TableView fx:id="CoursesTable" layoutX="300.0" layoutY="240.0" prefHeight="200.0" prefWidth="344.0">
+      <TableView fx:id="CoursesTable" layoutX="321.0" layoutY="221.0" prefHeight="226.0" prefWidth="344.0">
         <columns>
           <TableColumn fx:id="CoursesColumn" prefWidth="343.0" text="Tests" />
         </columns>
       </TableView>
-      <Button fx:id="BackButton" layoutX="198.0" layoutY="474.0" mnemonicParsing="false" onAction="#back" styleClass="orange-button" text="Back">
+      <Button fx:id="BackButton" layoutX="82.0" layoutY="165.0" mnemonicParsing="false" onAction="#back" prefHeight="40.0" prefWidth="70.0" styleClass="orange-button" text="Back">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Button fx:id="AddTestButton" layoutX="679.0" layoutY="350.0" mnemonicParsing="false" onAction="#spawnTestWindow" prefHeight="40.0" prefWidth="84.0" styleClass="orange-button" text="Create Test">
+      <Button fx:id="AddTestButton" layoutX="483.0" layoutY="461.0" mnemonicParsing="false" onAction="#spawnTestWindow" prefHeight="40.0" prefWidth="84.0" styleClass="orange-button" text="Create Test">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <ChoiceBox fx:id="coursesBox" layoutX="425.0" layoutY="164.0" prefHeight="25.0" prefWidth="219.0" />
-      <Text layoutX="300.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Chosen:">
+      <ChoiceBox fx:id="coursesBox" layoutX="446.0" layoutY="169.0" prefHeight="25.0" prefWidth="219.0" styleClass="drop-down" stylesheets="@style.css" />
+      <Text layoutX="321.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Chosen:">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Text>
-      <Button fx:id="DeleteTestButton" layoutX="679.0" layoutY="400.0" mnemonicParsing="false" onAction="#deleteTest" prefHeight="40.0" prefWidth="84.0" styleClass="orange-button" text="Delete Test">
+      <Button fx:id="DeleteTestButton" layoutX="581.0" layoutY="461.0" mnemonicParsing="false" onAction="#deleteTest" prefHeight="40.0" prefWidth="84.0" styleClass="orange-button" text="Delete Test">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
       <AnchorPane prefHeight="80.0" prefWidth="1000.0" style="-fx-background-color: rgb(221, 72, 20);">
          <children>
-            <Label fx:id="loggedInAsLabel" layoutX="658.0" layoutY="14.0" prefHeight="42.0" prefWidth="251.0" textFill="WHITE">
+            <Label fx:id="loggedInAsLabel" layoutX="650.0" layoutY="19.0" prefHeight="42.0" prefWidth="251.0" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Button layoutX="899.0" layoutY="20.0" mnemonicParsing="false" onAction="#signOut" style="-fx-background-color: rgb(221, 72, 20);" text="Sign out" textAlignment="CENTER" textFill="WHITE">
+            <Button layoutX="900.0" layoutY="25.0" mnemonicParsing="false" onAction="#signOut" style="-fx-background-color: rgb(221, 72, 20);" text="Sign out" textAlignment="CENTER" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -62,6 +57,6 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="errorMessage" alignment="CENTER_RIGHT" layoutX="300.0" layoutY="447.0" prefHeight="40.0" prefWidth="344.0" textFill="RED" />
+      <Label fx:id="errorMessage" alignment="CENTER_RIGHT" layoutX="321.0" layoutY="515.0" prefHeight="40.0" prefWidth="344.0" textFill="RED" />
    </children>
 </AnchorPane>

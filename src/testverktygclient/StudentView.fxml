@@ -18,12 +18,12 @@
    <children>
       <AnchorPane prefHeight="80.0" prefWidth="1000.0" style="-fx-background-color: rgb(221, 72, 20);">
          <children>
-            <Label fx:id="loggedInAsLabel" layoutX="658.0" layoutY="14.0" prefHeight="42.0" prefWidth="251.0" textFill="WHITE">
+            <Label fx:id="loggedInAsLabel" layoutX="650.0" layoutY="19.0" prefHeight="42.0" prefWidth="251.0" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Button layoutX="899.0" layoutY="20.0" mnemonicParsing="false" onAction="#signOut" style="-fx-background-color: rgb(221, 72, 20);" text="Sign out" textAlignment="CENTER" textFill="WHITE">
+            <Button layoutX="900.0" layoutY="25.0" mnemonicParsing="false" onAction="#signOut" style="-fx-background-color: rgb(221, 72, 20);" text="Sign out" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -33,22 +33,22 @@
             </Button>
          </children>
       </AnchorPane>
-      <Label layoutX="291.0" layoutY="115.0" prefHeight="53.0" prefWidth="328.0" text="Choose test&#10;">
+      <Label layoutX="223.0" layoutY="115.0" prefHeight="53.0" prefWidth="328.0" text="Choose test&#10;">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="290.0" layoutY="154.0" prefHeight="28.0" prefWidth="387.0" text="You can choose a test or see results from an old test">
+      <Label layoutX="223.0" layoutY="154.0" prefHeight="28.0" prefWidth="387.0" text="You can choose a test or see results from an old test">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TableView fx:id="completedTestTable" layoutX="290.0" layoutY="468.0" prefHeight="123.0" prefWidth="413.0" styleClass="studentTableView">
+      <TableView fx:id="completedTestTable" layoutX="223.0" layoutY="467.0" prefHeight="150.0" prefWidth="554.0" styleClass="studentTableView">
         <columns>
           <TableColumn fx:id="completedCourseNameColumn" prefWidth="131.0" text="Course Name" />
             <TableColumn fx:id="completedTestNameColumn" prefWidth="152.0" text="Test Name" />
-            <TableColumn fx:id="completedTestPointsColumn" prefWidth="54.0" text="Points" />
-            <TableColumn fx:id="completedTestMaxColumn" prefWidth="75.0" text="Max Points" />
+            <TableColumn fx:id="completedTestPointsColumn" prefWidth="124.0" text="Points" />
+            <TableColumn fx:id="completedTestMaxColumn" minWidth="75.0" prefWidth="158.0" text="Max Points" />
         </columns>
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -57,10 +57,10 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <ChoiceBox fx:id="chooseCourseDropDown" layoutX="291.0" layoutY="192.0" prefHeight="31.0" prefWidth="237.0" />
-      <TableView fx:id="availableTestTable" layoutX="290.0" layoutY="289.0" prefHeight="123.0" prefWidth="413.0" styleClass="studentTableView">
+      <ChoiceBox fx:id="chooseCourseDropDown" layoutX="223.0" layoutY="182.0" prefHeight="31.0" prefWidth="237.0" styleClass="drop-down" stylesheets="@style.css" />
+      <TableView fx:id="availableTestTable" layoutX="223.0" layoutY="236.0" prefHeight="150.0" prefWidth="554.0" styleClass="studentTableView">
          <columns>
-            <TableColumn fx:id="availableTestColumn" prefWidth="412.0" text="Available Tests" />
+            <TableColumn fx:id="availableTestColumn" minWidth="552.0" prefWidth="552.0" text="Available Tests" />
          </columns>
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -69,7 +69,7 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="startButton" layoutX="738.0" layoutY="385.0" mnemonicParsing="false" onAction="#startTest" prefHeight="27.0" prefWidth="109.0" styleClass="orange-button" text="Start Test" textAlignment="CENTER" textFill="#111111">
+      <Button fx:id="startButton" layoutX="668.0" layoutY="403.0" mnemonicParsing="false" onAction="#startTest" prefHeight="40.0" prefWidth="109.0" styleClass="orange-button" text="Start Test" textAlignment="CENTER" textFill="#111111">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -77,7 +77,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label fx:id="chooseTest" layoutX="576.0" layoutY="412.0" prefHeight="17.0" prefWidth="143.0" styleClass="chooseTest" text="Please choose a test" />
+      <Label fx:id="chooseTest" layoutX="500.0" layoutY="413.0" prefHeight="17.0" prefWidth="143.0" styleClass="chooseTest" textFill="RED" />
       <Label layoutX="8.0" layoutY="4.0" prefHeight="70.0" prefWidth="287.0" text="Newton Testing Tool 2017" textFill="WHITE">
          <font>
             <Font size="24.0" />

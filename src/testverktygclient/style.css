@@ -2,15 +2,17 @@
     -fx-background-color: white;
 }
 
+.drop-down {
+    -fx-background-color: white;
+    -fx-border-color: black;
+}
+
 .orange-button {
     -fx-background-color: DD4814;
     -fx-text-fill: white;
     
 }
 
-.chooseTest{
-    -fx-text-fill: white;
-}
 
 .table-view .column-header{
     -fx-background-color: DD4814;

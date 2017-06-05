@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -15,16 +9,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygclient.StatisticsViewController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygclient.StatisticsViewController">
    <children>
       <AnchorPane prefHeight="80.0" prefWidth="1000.0" styleClass="headerfooter" stylesheets="@taketestview.css">
          <children>
-            <Label fx:id="loggedInAsLabel" layoutX="691.0" layoutY="19.0" prefHeight="42.0" prefWidth="251.0" textFill="WHITE">
+            <Label fx:id="loggedInAsLabel" layoutX="650.0" layoutY="19.0" prefHeight="42.0" prefWidth="251.0" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Button layoutX="904.0" layoutY="24.0" mnemonicParsing="false" onAction="#signOut" style="-fx-background-color: rgb(221, 72, 20);" text="Sign out" textAlignment="CENTER" textFill="WHITE">
+            <Button layoutX="900.0" layoutY="25.0" mnemonicParsing="false" onAction="#signOut" style="-fx-background-color: rgb(221, 72, 20);" text="Sign out" textAlignment="CENTER" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -34,8 +28,8 @@
             </Button>
          </children>
       </AnchorPane>
-      <ChoiceBox fx:id="testBox" layoutX="135.0" layoutY="225.0" prefHeight="25.0" prefWidth="315.0" />
-      <VBox layoutX="135.0" layoutY="267.0" prefHeight="292.0" prefWidth="315.0">
+      <ChoiceBox fx:id="testBox" layoutX="407.0" layoutY="225.0" prefHeight="25.0" prefWidth="315.0" styleClass="drop-down" stylesheets="@style.css" />
+      <VBox layoutX="407.0" layoutY="267.0" prefHeight="292.0" prefWidth="315.0">
          <children>
             <Label prefHeight="55.0" prefWidth="315.0" styleClass="statistics-text" stylesheets="@style.css" text="Number of times test has been taken:">
                <font>
@@ -68,7 +62,7 @@
             </Label>
          </children>
       </VBox>
-      <VBox layoutX="450.0" layoutY="267.0" prefHeight="292.0" prefWidth="163.0">
+      <VBox layoutX="722.0" layoutY="267.0" prefHeight="292.0" prefWidth="163.0">
          <children>
             <Label fx:id="numberOfTimesLabel" prefHeight="55.0" prefWidth="315.0" styleClass="statistics-text" stylesheets="@style.css">
                <font>
@@ -104,12 +98,12 @@
             <Insets left="10.0" />
          </padding>
       </VBox>
-      <Label layoutX="134.0" layoutY="168.0" prefHeight="35.0" prefWidth="413.0" text="Chose a test below to see statistics.">
+      <Label layoutX="407.0" layoutY="168.0" prefHeight="35.0" prefWidth="413.0" text="Chose a test below to see statistics.">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Button layoutX="778.0" layoutY="575.0" mnemonicParsing="false" onAction="#backToTeacherView" prefHeight="27.0" prefWidth="109.0" styleClass="orange-button" stylesheets="@style.css" text="Back">
+      <Button layoutX="82.0" layoutY="165.0" mnemonicParsing="false" onAction="#backToTeacherView" prefHeight="40.0" prefWidth="70.0" styleClass="orange-button" stylesheets="@style.css" text="Back">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
