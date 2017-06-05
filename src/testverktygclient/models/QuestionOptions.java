@@ -6,6 +6,8 @@
 package testverktygclient.models;
 
 import java.util.ArrayList;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import testverktygclient.models.Answer;
 
 /**
@@ -13,24 +15,23 @@ import testverktygclient.models.Answer;
  */
 public class QuestionOptions {
     private Answer option1, option2, option3, option4;
-    private String question;
     private String correct = "";
     public boolean option1Correct, option2Correct, option3Correct, option4Correct = false;
-    private String option1string, option2string, option3string, option4string;
+    private SimpleStringProperty question, option1string, option2string, option3string, option4string;
     private boolean multi;
     
     public QuestionOptions(String question, Answer option1, Answer option2, Answer option3, Answer option4, boolean multi){
-        this.question = question;
         this.option1 = option1;
         this.option2 = option2;
         this.option3 = option3;
         this.option4 = option4;
         this.multi = multi;
         
-        this.option1string = option1.getOptionText();
-        this.option2string = option2.getOptionText();
-        this.option3string = option3.getOptionText();
-        this.option4string = option4.getOptionText();
+        this.question = new SimpleStringProperty(question);
+        this.option1string = new SimpleStringProperty(option1.getOptionText());
+        this.option2string = new SimpleStringProperty(option2.getOptionText());
+        this.option3string = new SimpleStringProperty(option3.getOptionText());
+        this.option4string = new SimpleStringProperty(option4.getOptionText());
         
         if(option1.isCorrect()){
             correct += "(1)";
@@ -49,41 +50,70 @@ public class QuestionOptions {
             option4Correct = true;
         }
     }
+    
+    public String getQuestion(){
+        return this.question.get();
+    }
 
     public String getOption1string() {
-        return option1string;
+        return this.option1string.get();
     }
-
-    public void setOption1string(String option1string) {
-        this.option1string = option1string;
-    }
-
+    
     public String getOption2string() {
-        return option2string;
+        return this.option2string.get();
     }
-
-    public void setOption2string(String option2string) {
-        this.option2string = option2string;
-    }
-
+    
     public String getOption3string() {
-        return option3string;
+        return this.option3string.get();
     }
-
-    public void setOption3string(String option3string) {
-        this.option3string = option3string;
-    }
-
+    
     public String getOption4string() {
-        return option4string;
-    }
-
-    public void setOption4string(String option4string) {
-        this.option4string = option4string;
+        return this.option4string.get();
     }
     
+    public void setOption1string(String newValue){
+       option1.setOptionText(newValue);
+       this.option1string.set(newValue);
+    }
     
+    public void setOption2string(String newValue){
+       option2.setOptionText(newValue);
+       this.option2string.set(newValue);
+    }
     
+    public void setOption3string(String newValue){
+        option3.setOptionText(newValue);
+        this.option3string.set(newValue);
+    }
+    
+    public void setOption4string(String newValue){
+        option4.setOptionText(newValue);
+        this.option4string.set(newValue);
+    }
+    
+    public void setQuestion(String newValue){
+        this.question.set(newValue);
+    }
+    
+    public SimpleStringProperty questionProperty(){
+        return question;
+    }
+    
+    public SimpleStringProperty option1stringProperty() {
+       return option1string;
+    }
+    
+    public SimpleStringProperty option2stringProperty() {
+       return option2string;
+    }
+    
+    public SimpleStringProperty option3stringProperty() {
+       return option3string;
+    }
+    
+    public SimpleStringProperty option4stringProperty() {
+       return option4string;
+    }    
     
     public boolean getMulti(){
         return multi;
@@ -106,10 +136,6 @@ public class QuestionOptions {
     
     public boolean getoption4Correct(){
         return option4Correct;
-    }
-    
-    public String getQuestion(){
-        return question;
     }
     
     public String getCorrect(){

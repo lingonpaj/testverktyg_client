@@ -28,9 +28,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -147,6 +149,38 @@ public class AddTestViewController implements Initializable {
     }
     
     @FXML
+    public void handleEditActionColumn1(CellEditEvent<QuestionOptions,String> t){
+        ((QuestionOptions) t.getTableView().getItems().get(
+        t.getTablePosition().getRow())
+        ).setOption1string(t.getNewValue());
+    }
+    @FXML
+    public void handleEditActionColumn2(CellEditEvent<QuestionOptions,String> t){
+        ((QuestionOptions) t.getTableView().getItems().get(
+        t.getTablePosition().getRow())
+        ).setOption2string(t.getNewValue());
+    }
+    @FXML
+    public void handleEditActionColumn3(CellEditEvent<QuestionOptions,String> t){
+        ((QuestionOptions) t.getTableView().getItems().get(
+        t.getTablePosition().getRow())
+        ).setOption3string(t.getNewValue());
+    }
+    @FXML
+    public void handleEditActionColumn4(CellEditEvent<QuestionOptions,String> t){
+        ((QuestionOptions) t.getTableView().getItems().get(
+        t.getTablePosition().getRow())
+        ).setOption4string(t.getNewValue());
+    }
+    
+    @FXML
+    public void handleEditActionColumnQuestion(CellEditEvent<QuestionOptions,String> t){
+        ((QuestionOptions) t.getTableView().getItems().get(
+        t.getTablePosition().getRow())
+        ).setQuestion(t.getNewValue());
+    }
+    
+    @FXML
     private void trimTime(){
         String trimmedminutes = minutesBox.getText().replaceAll("[^0-9]", "");
         String trimmedseconds = secondsBox.getText().replaceAll("[^0-9]", "");
@@ -233,6 +267,14 @@ public class AddTestViewController implements Initializable {
         Question3Column.setCellValueFactory(new PropertyValueFactory<QuestionOptions, Answer>("option3string"));
         Question4Column.setCellValueFactory(new PropertyValueFactory<QuestionOptions, Answer>("option4string"));
         CorrectQuestionColumn.setCellValueFactory(new PropertyValueFactory<QuestionOptions, String>("correct"));
+        
+        QuestionColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        Question1Column.setCellFactory(TextFieldTableCell.forTableColumn());
+        Question2Column.setCellFactory(TextFieldTableCell.forTableColumn());
+        Question3Column.setCellFactory(TextFieldTableCell.forTableColumn());
+        Question4Column.setCellFactory(TextFieldTableCell.forTableColumn());
+        
+        
     }
     
     @FXML

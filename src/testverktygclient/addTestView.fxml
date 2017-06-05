@@ -17,13 +17,13 @@
       </Text>
       <!-- TableView questionsTable, TableColumn (Questioncolumn, Question1Column, Question2Column, Question3Column, Question4Column, CorrectQuestionColumn) -->
       <!-- Button QuestionButton, Text chosenCourseText, Button (finishTestButton, backButton) -->
-      <TableView fx:id="questionsTable" layoutX="82.0" layoutY="217.0" prefHeight="313.0" prefWidth="791.0">
+      <TableView fx:id="questionsTable" editable="true" layoutX="82.0" layoutY="217.0" prefHeight="313.0" prefWidth="791.0">
         <columns>
-          <TableColumn fx:id="QuestionColumn" prefWidth="142.0" text="Question" />
-          <TableColumn fx:id="Question1Column" prefWidth="130.0" text="#1" />
-            <TableColumn fx:id="Question2Column" prefWidth="130.0" text="#2" />
-            <TableColumn fx:id="Question3Column" prefWidth="130.0" text="#3" />
-            <TableColumn fx:id="Question4Column" prefWidth="130.0" text="#4" />
+          <TableColumn fx:id="QuestionColumn" onEditCommit="#handleEditActionColumnQuestion" prefWidth="142.0" text="Question" />
+          <TableColumn fx:id="Question1Column" onEditCommit="#handleEditActionColumn1" prefWidth="130.0" text="#1" />
+            <TableColumn fx:id="Question2Column" onEditCommit="#handleEditActionColumn2" prefWidth="130.0" text="#2" />
+            <TableColumn fx:id="Question3Column" onEditCommit="#handleEditActionColumn3" prefWidth="130.0" text="#3" />
+            <TableColumn fx:id="Question4Column" onEditCommit="#handleEditActionColumn4" prefWidth="130.0" text="#4" />
             <TableColumn fx:id="CorrectQuestionColumn" prefWidth="128.0" text="Correct #" />
         </columns>
       </TableView>
