@@ -5,14 +5,20 @@
  */
 package testverktygclient;
 
+import com.sun.javafx.scene.control.skin.TableHeaderRow;
+import com.sun.javafx.scene.control.skin.TableViewSkinBase;
+import static java.awt.SystemColor.window;
 import testverktygclient.models.QuestionOptions;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -25,9 +31,15 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.Window;
+import javafx.stage.WindowEvent;
 import static testverktygclient.CreateTestViewController.courseChosen;
 import testverktygclient.models.Answer;
 import testverktygclient.models.CompletedTest;
@@ -62,6 +74,7 @@ public class AddTestViewController implements Initializable {
     private TextField minutesBox, secondsBox, TestNameField;
     public static ObservableList<QuestionOptions> toReturn;
 
+    private Window window;
     
     @FXML
     private Label loggedInAsLabel, chosenCourseText;
@@ -74,8 +87,52 @@ public class AddTestViewController implements Initializable {
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb) {        
+        secondsBox.textProperty().addListener(new ChangeListener<String>() {
+        @Override
+        public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+            if (!newValue.matches("\\d*")) {
+                secondsBox.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+            try{
+                int parsedseconds = Integer.parseInt(secondsBox.getText());
+                if(parsedseconds > 59){
+                    secondsBox.setText("59");
+                }
+            }catch(Exception e){
+                
+            }
+        }
+        });
+        
+        minutesBox.textProperty().addListener(new ChangeListener<String>() {
+        @Override
+        public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+            if (!newValue.matches("\\d*")) {
+                minutesBox.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        }
+        });
+        
+        questionsTable.widthProperty().addListener(new ChangeListener<Number>(){
+            @Override
+            public void changed(ObservableValue<? extends Number> source, Number oldWidth, Number newWidth){
+                TableHeaderRow header = (TableHeaderRow) questionsTable.lookup("TableHeaderRow");
+                header.reorderingProperty().addListener(new ChangeListener<Boolean>() {
+                    @Override
+                    public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                        header.setReordering(false);
+                    }
+                });
+            }
+        });
+      
+        
         questionsTable.setColumnResizePolicy((param) -> false);
+
+        
+        
+
         toReturn = FXCollections.observableArrayList();
         questionsTable.setItems(toReturn);
         serverConnection = ServerConnection.getInstance();
@@ -85,8 +142,26 @@ public class AddTestViewController implements Initializable {
                 + " " + serverConnection.loggedInUser.getLastName());
     }   
     
-    public void setText(){
+    private void setText(){
         chosenCourseText.setText("Adding Test for Course: " + courseChosen.getName());
+    }
+    
+    @FXML
+    private void trimTime(){
+        String trimmedminutes = minutesBox.getText().replaceAll("[^0-9]", "");
+        String trimmedseconds = secondsBox.getText().replaceAll("[^0-9]", "");
+        
+        if(!trimmedseconds.isEmpty()){
+            if(Integer.parseInt(trimmedseconds) > 59){
+            trimmedseconds = "59";
+            }
+        }
+        
+        
+        minutesBox.setText(trimmedminutes);
+        secondsBox.setText(trimmedseconds);
+        minutesBox.positionCaret(trimmedminutes.length());
+        secondsBox.positionCaret(trimmedseconds.length());
     }
     
     @FXML
@@ -98,7 +173,9 @@ public class AddTestViewController implements Initializable {
         stage.show();
     }
     
-    public int getTime(){
+    
+    
+    private int getTime(){
 
         String minutes = minutesBox.getText();
         String minutesPurged = minutes.replaceAll("[^0-9]", "");
@@ -149,7 +226,7 @@ public class AddTestViewController implements Initializable {
         
         return (minutesConverted + secondsConverted);
     }
-    public void setCellValueFactories(){
+    private void setCellValueFactories(){
         QuestionColumn.setCellValueFactory(new PropertyValueFactory<QuestionOptions, String>("question"));
         Question1Column.setCellValueFactory(new PropertyValueFactory<QuestionOptions, Answer>("option1string"));
         Question2Column.setCellValueFactory(new PropertyValueFactory<QuestionOptions, Answer>("option2string"));
@@ -230,7 +307,7 @@ public class AddTestViewController implements Initializable {
     }
     
     @FXML
-    public void back(ActionEvent event) throws IOException {
+    private void back(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("CreateTestView.fxml"));
 
         Scene s = new Scene(root);

@@ -5,6 +5,7 @@
  */
 package testverktygclient;
 
+import com.sun.javafx.scene.control.skin.TableHeaderRow;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -142,6 +143,20 @@ public class StudentViewController implements Initializable {
         completedTestNameColumn.setCellValueFactory(new PropertyValueFactory("TestName"));
         completedTestPointsColumn.setCellValueFactory(new PropertyValueFactory("userScore"));
         completedTestMaxColumn.setCellValueFactory(new PropertyValueFactory("testMaxScore"));
+        
+        completedTestTable.widthProperty().addListener(new ChangeListener<Number>(){
+            @Override
+            public void changed(ObservableValue<? extends Number> source, Number oldWidth, Number newWidth){
+                TableHeaderRow header = (TableHeaderRow) completedTestTable.lookup("TableHeaderRow");
+                header.reorderingProperty().addListener(new ChangeListener<Boolean>() {
+                    @Override
+                    public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                        header.setReordering(false);
+                    }
+                });
+            }
+        });
+        
     }
     
     

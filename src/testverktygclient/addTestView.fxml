@@ -53,7 +53,7 @@
       <TextField fx:id="secondsBox" layoutX="812.0" layoutY="135.0" prefHeight="25.0" prefWidth="41.0" />
       <Text layoutX="740.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Minutes" wrappingWidth="47.0" />
       <Text layoutX="809.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seconds" wrappingWidth="47.0" />
-      <Text fx:id="errorText" fill="RED" layoutX="575.0" layoutY="639.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="258.0" />
+      <Text fx:id="errorText" fill="RED" layoutX="575.0" layoutY="635.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="258.0" />
       <AnchorPane prefHeight="80.0" prefWidth="1000.0" style="-fx-background-color: rgb(221, 72, 20);">
          <children>
             <Label fx:id="loggedInAsLabel" layoutX="658.0" layoutY="14.0" prefHeight="42.0" prefWidth="251.0" textFill="WHITE">

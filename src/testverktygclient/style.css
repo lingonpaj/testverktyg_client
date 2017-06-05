@@ -17,6 +17,11 @@
     -fx-border-radius: 100;
 }
 
+.scroll-bar:horizontal {
+    -fx-opacity: 0;
+    -fx-padding:-7;
+}
+
 .chooseDropDown:focused{
     -fx-background-color: -fx-focus-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
     -fx-background-radius: 6.4, 4, 5, 3;

@@ -32,12 +32,20 @@ public class LoginController implements Initializable {
     
     @FXML
     private void login(ActionEvent event) throws IOException {
-        User user = serverConnection.loginAuthentication(userName.getText(), 
+        try{
+            User user = serverConnection.loginAuthentication(userName.getText(), 
                 password.getText());
         if(user == null) {
             errorLogin.setText("Authentication: Failed.");
         } else {
             loadNextPage(user);
+        }
+        }catch(Exception e){
+            if(userName.getText().isEmpty()){
+                errorLogin.setText("Enter a username.");
+            }else if(password.getText().isEmpty()){
+                errorLogin.setText("Enter a password.");
+            }
         }
     }
     
