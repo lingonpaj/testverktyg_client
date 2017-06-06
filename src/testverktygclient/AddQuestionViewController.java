@@ -159,9 +159,6 @@ public class AddQuestionViewController implements Initializable {
         ArrayList<Answer> ourOptions = new ArrayList<Answer>();
         for(TextField t : optionField){
             boolean assign = checkboxes.get(count3).isSelected();
-            if(assign){
-                System.out.println("Assign is true for: " + count3);
-            }
             Answer option = new Answer(1, t.getText(), assign);
             count3 += 1;
             ourOptions.add(option);

@@ -168,7 +168,6 @@ public class StatisticsViewController implements Initializable {
     }
     
     private void updateStatistics(String testName) {
-        System.out.println(testName);
         percentageLabel.setText(getPercentageOfStudentsWhoCompletedTest(testName) + "%");
         studentBestScoreLabel.setText(getHighestScorerOnATest(testName));
         averageScoreLabel.setText(getAverageScoreOfATest(testName) + " points");

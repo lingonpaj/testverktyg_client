@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,8 +20,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -68,6 +72,11 @@ public class CreateTestViewController implements Initializable {
     private TableColumn CoursesColumn;
     @FXML
     private Button DeleteTestButton;
+    
+    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+    
+    DialogPane dialogPane = alert.getDialogPane();
+    
     /**
      * Initializes the controller class.
      */
@@ -79,6 +88,9 @@ public class CreateTestViewController implements Initializable {
        addListener();
        loggedInAsLabel.setText("Logged in as: " + serverConnection.loggedInUser.getFirstName()
                 + " " + serverConnection.loggedInUser.getLastName());
+       dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+       dialogPane.getStyleClass().add("myAlert");
+       dialogPane.setMinSize(300, 200);
        
     }  
     
@@ -152,10 +164,19 @@ public class CreateTestViewController implements Initializable {
 
     @FXML
     private void deleteTest(ActionEvent event) {
-        Test selectedTest = (Test) CoursesTable.getSelectionModel().getSelectedItem();
-        if(selectedTest != null) {
-            serverConnection.deleteTest(selectedTest.getId());
-            CoursesTable.getItems().remove(selectedTest);
+        
+        alert.setTitle("Finish Test Confirmation");
+        alert.setHeaderText("Note! You can not undo this!");
+        alert.setContentText("Are you sure you want to delete this test?");
+        Optional<ButtonType> action = alert.showAndWait();
+            
+        if (action.get() == ButtonType.OK) {
+            Test selectedTest = (Test) CoursesTable.getSelectionModel().getSelectedItem();
+            if(selectedTest != null) {
+                serverConnection.deleteTest(selectedTest.getId());
+                CoursesTable.getItems().remove(selectedTest);
+            }
+                
         }
     }
 }

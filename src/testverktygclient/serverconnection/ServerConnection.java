@@ -124,22 +124,22 @@ public class ServerConnection implements Serializable{
         
         //This to get the 
         loggedInUser = loggedInStudent;
-        
+        client.close();
         return loggedInStudent.getCompletedTests().get(loggedInStudent.getCompletedTests().size()-1);
     }
     
     public void addCompletedTest(CompletedTest newTest, int studentId) {
-        System.out.println("ID JAG VILL SKICKA MED" + studentId);
         Client client = ClientBuilder.newClient();
         client.target("http://localhost:8080/TestVerktygServer/webapi/students").path("" + studentId).path("completedtests")
                 .request(MediaType.APPLICATION_JSON).post(Entity.json(newTest), CompletedTest.class);
+        client.close();
     }
     
     public void addTest(Test newTest, int courseId) {
-        System.out.println("ID JAG VILL SKICKA MED" + courseId);
         Client client = ClientBuilder.newClient();
         client.target("http://localhost:8080/TestVerktygServer/webapi/courses").path("" + courseId).path("tests")
                 .request(MediaType.APPLICATION_JSON).post(Entity.json(newTest), Test.class);
+        client.close();
     }
     
     public List<Student> getStudents() {
@@ -147,6 +147,7 @@ public class ServerConnection implements Serializable{
         ArrayList<Student> students;
         students = client.target("http://localhost:8080/TestVerktygServer/webapi/students")
                 .request(MediaType.APPLICATION_JSON).get(new GenericType<ArrayList<Student>>(){});
+        client.close();
         return students;
     }
     
@@ -155,6 +156,7 @@ public class ServerConnection implements Serializable{
         ArrayList<Course> courses;
         courses = client.target("http://localhost:8080/TestVerktygServer/webapi/courses")
                 .request(MediaType.APPLICATION_JSON).get(new GenericType<ArrayList<Course>>(){});
+        client.close();
         return courses;
     }
     
@@ -163,5 +165,6 @@ public class ServerConnection implements Serializable{
         client.target("http://localhost:8080/TestVerktygServer/webapi/courses/1/tests/")
                 .path("" + testId).request(MediaType.APPLICATION_JSON)
                     .delete();
+        client.close();
     }
 }

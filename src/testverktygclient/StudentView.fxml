@@ -38,7 +38,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="223.0" layoutY="154.0" prefHeight="28.0" prefWidth="387.0" text="You can choose a test or see results from an old test">
+      <Label layoutX="223.0" layoutY="154.0" prefHeight="28.0" prefWidth="387.0" text="You can choose a test to take or see results from an old test">
          <font>
             <Font size="14.0" />
          </font>

@@ -253,10 +253,6 @@ public class AddTestViewController implements Initializable {
             return -1;
         }
         errorText.setText("");
-
-        
-        System.out.println(secondsConverted);
-        System.out.println(minutesConverted);
         
         return (minutesConverted + secondsConverted);
     }
@@ -289,7 +285,6 @@ public class AddTestViewController implements Initializable {
     
     @FXML
     private void addTest(){
-        System.out.println("Gettime returns: " + getTime());
         int time = getTime();
         if(time < 0){
             errorText.setText("Please enter a valid time limit.");
@@ -297,7 +292,7 @@ public class AddTestViewController implements Initializable {
             
         }
         else{
-            System.out.println("We found the time of: " + getTime());
+
             if(TestNameField.getText().length() < 1){
                 errorText.setText("Cannot make a test with an empty name.");
             }
@@ -310,9 +305,7 @@ public class AddTestViewController implements Initializable {
                 //Question int id, String questionText, ArrayList<Option> options
                 
                 ArrayList<Question> toFill = new ArrayList<Question>();
-                
-                
-                System.out.println("size of return: " + toReturn.size());
+              
                 for(QuestionOptions q : toReturn){
                     ArrayList<Answer> optionsTouse = new ArrayList<Answer>();
                     String name = q.getQuestion();
@@ -332,7 +325,6 @@ public class AddTestViewController implements Initializable {
 
                     
                     boolean multi = q.getMulti();
-                    System.out.println("Size now please?" + optionsTouse.size());
                     Question toAdd = new Question(1,name, optionsTouse, multi);
                     toFill.add(toAdd);
                 }
@@ -388,7 +380,7 @@ public class AddTestViewController implements Initializable {
             }
         }
         catch(Exception e){
-            System.out.println("Got a empty list to operate on!");
+
         }
         
         

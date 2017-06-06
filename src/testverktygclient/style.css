@@ -46,3 +46,28 @@
 .statistics-text {
     -fx-font-size: 18px;
 }
+
+.myAlert{
+    -fx-background-color:white;
+}
+
+.myAlert > *.button-bar > *.container{
+    -fx-background-color: white;
+}
+
+.myAlert > *.label.content{
+    -fx-font-size: 14px;
+
+
+}
+
+.myAlert:header *.header-panel{
+    -fx-background-color: DD4814;
+    -fx-font-color: white;
+}
+
+.myAlert:header *.header-panel *.label{
+    -fx-font-size: 26   px;
+    -fx-text-fill: white;
+
+}

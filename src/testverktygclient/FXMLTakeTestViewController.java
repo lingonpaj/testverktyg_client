@@ -20,6 +20,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
@@ -64,15 +65,14 @@ public class FXMLTakeTestViewController implements Initializable {
     
     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
     
+    DialogPane dialogPane = alert.getDialogPane();
+
+    
     public void finishTest(ActionEvent event) throws IOException {
         score = 0;
-        for (int i = 0; i < selectedoptions.length; i++) {
-            System.out.println(selectedoptions[i][0]);
-        }
         for (int i = 0; i < serverconnection.testToTake.getQuestions().size(); i++) {
             possiblescore = 0;
             multiscore = 0;
-            System.out.println("checking new question");
             if (serverconnection.testToTake.getQuestions().get(i).isMulti()) {
                 calculateScoreForMultiQuestion(i);
             } else {
@@ -85,20 +85,10 @@ public class FXMLTakeTestViewController implements Initializable {
         completedTest.setUserScore(score);
         completedTest.setTestName(serverconnection.testToTake.getName());
         completedTest.setTestMaxScore(serverconnection.testToTake.getQuestions().size());
-        
-        System.out.println("ID JAG VILL SKICKA IN I METOD" + serverconnection.loggedInUser.getId());
-        
-        
-        
-        System.out.println("Test completed: " + completedTest.getTestName() + completedTest.getUserScore() + "/" + completedTest.getTestMaxScore());
 
-        //below the test should be added to the student currently logged in, then it should load the previous
-        //student view page
-        //add code here
-        //timeline.pause();
+
         
         if (timeOut == true) {
-            System.out.println("how many times?");
             timeline.stop();
             serverconnection.addCompletedTest(completedTest, serverconnection.loggedInUser.getId());
             alert.hide();
@@ -118,7 +108,6 @@ public class FXMLTakeTestViewController implements Initializable {
             
             if (action.get() == ButtonType.OK) {
                 if(!timeOut){
-                    System.out.println("this many!");
                     serverconnection.addCompletedTest(completedTest, serverconnection.loggedInUser.getId());
                     Parent root = FXMLLoader.load(getClass().getResource("FXMLTestSummaryView.fxml"));
                     Scene s = new Scene(root);
@@ -127,8 +116,6 @@ public class FXMLTakeTestViewController implements Initializable {
                     timeline.stop();
                 }
                 
-            } else if (action.get() == ButtonType.CANCEL) {
-                System.out.println("You cancelled.");
             }
         }
     }
@@ -136,9 +123,6 @@ public class FXMLTakeTestViewController implements Initializable {
     public void calculateScoreForMultiQuestion(int questionNumber) {
         
         for (int n = 0; n < selectedoptions[questionNumber].length; n++) {
-            System.out.println("what is this? " + selectedoptions[questionNumber][n] + "loop: " + n);
-            
-            System.out.println(serverconnection.testToTake.getQuestions().get(questionNumber).getAnswers().get(n).isCorrect());
             if (serverconnection.testToTake.getQuestions().get(questionNumber).getAnswers().get(n).isCorrect()) {
                 
                 if (selectedoptions[questionNumber][n] > 0) {
@@ -146,14 +130,11 @@ public class FXMLTakeTestViewController implements Initializable {
                 }
                 possiblescore++;
             } else {
-                System.out.println("does this ever happen?");
-                System.out.println("plesasas" + selectedoptions[questionNumber][n]);
                 if (selectedoptions[questionNumber][n] > 0) {
                     multiscore--;
                 }
             }
         }
-        System.out.println("multi: " + multiscore + "poss: " + possiblescore);
         if (multiscore == possiblescore) {
             score++;
         }
@@ -176,7 +157,6 @@ public class FXMLTakeTestViewController implements Initializable {
     public void updateTimerLabel() {
         String minutes;
         String seconds;
-        System.out.println(timeLeft);
         timeLeft--;
         if (timeLeft / 60 < 10) {
             minutes = "0" + timeLeft / 60;
@@ -194,7 +174,6 @@ public class FXMLTakeTestViewController implements Initializable {
     }
     
     public void timer() throws IOException {
-        System.out.println("timermetod");
         updateTimerLabel();
         if (timeLeft == -1) {
             timeline.stop();
@@ -345,5 +324,9 @@ public class FXMLTakeTestViewController implements Initializable {
             updateSelectedButton(nextquestion);
             createOptions(nextquestion);
         });
+        
+        dialogPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        dialogPane.getStyleClass().add("myAlert");
+        dialogPane.setMinSize(300, 200);
     }
 }

@@ -101,14 +101,12 @@ public class StudentViewController implements Initializable {
         
         loggedInAsLabel.setText("Logged in as: " + serverConnection.loggedInUser.getFirstName()
                 + " " + serverConnection.loggedInUser.getLastName());
-        
-        System.out.println(loggedinstudent.getCompletedTests().size());
+
         
         chooseCourseDropDown.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
 
         @Override
         public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-            System.out.println(oldValue + " " + newValue);
             int newValueCasted = (int) newValue;
             selectedCourse = (Course) chooseCourseDropDown.getItems().get(newValueCasted);
 
@@ -122,7 +120,6 @@ public class StudentViewController implements Initializable {
 
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                System.out.println(oldValue + " " + newValue);
                 int newValueCasted = (int) newValue;
                 selectedTest = (Test) availableTestTable.getItems().get(newValueCasted);
 
