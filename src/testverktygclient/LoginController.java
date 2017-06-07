@@ -62,6 +62,8 @@ public class LoginController implements Initializable {
             stg.setScene(s);
         } catch (IOException ex) {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            
         }
     }
     
