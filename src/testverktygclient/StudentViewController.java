@@ -53,17 +53,12 @@ public class StudentViewController implements Initializable {
     private TableColumn<Test, String> availableTestColumn;
     @FXML
     private TableColumn<CompletedTest, String> completedCourseNameColumn;
-    
     @FXML
     private TableColumn<CompletedTest, String> completedTestNameColumn;
-    
     @FXML
     private TableColumn<CompletedTest, Integer> completedTestPointsColumn;
-    
     @FXML
     private TableColumn<CompletedTest, Integer> completedTestMaxColumn;
-
-    
     @FXML
     private ChoiceBox chooseCourseDropDown;
     @FXML
@@ -121,7 +116,10 @@ public class StudentViewController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 int newValueCasted = (int) newValue;
-                selectedTest = (Test) availableTestTable.getItems().get(newValueCasted);
+                try {
+                    selectedTest = (Test) availableTestTable.getItems().get(newValueCasted);
+                } catch (Exception e) {
+                }
 
                 
             }
